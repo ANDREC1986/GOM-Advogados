@@ -1,0 +1,121 @@
+---
+import SpecialtyItem from '../common/SpecialtyItem.astro';
+
+const specialties = [
+  { icon: 'scale' as const, title: 'DIREITO EMPRESARIAL', href: '#empresarial' },
+  { icon: 'chart' as const, title: 'DIREITO TRIBUTÁRIO', href: '#tributario' },
+  { icon: 'people' as const, title: 'DIREITO CÍVEL', href: '#civel' },
+  { icon: 'building' as const, title: 'DIREITO IMOBILIÁRIO', href: '#imobiliario' },
+  { icon: 'shield' as const, title: 'DIREITO PREVIDENCIÁRIO', href: '#previdenciario' },
+  { icon: 'document' as const, title: 'CONSULTIVO E PLANEJAMENTO', href: '#consultivo' }
+];
+---
+
+<section class="specialties-section">
+  <div class="specialties-container">
+    <!-- Header Badge -->
+    <div class="section-badge">
+      <span class="badge-text">ÁREAS DE ATUAÇÃO</span>
+      <div class="badge-line"></div>
+    </div>
+
+    <!-- Items Grid -->
+    <div class="specialties-grid">
+      {specialties.map((item, index) => (
+        <>
+          {index > 0 && <div class="item-divider" />}
+          <SpecialtyItem 
+            icon={item.icon} 
+            title={item.title} 
+            href={item.href} 
+          />
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .specialties-section {
+    width: 100%;
+    background-color: var(--color-bg-light);
+    border-top: 1px solid var(--color-border-light);
+    padding: 32px 0 36px 0;
+  }
+
+  .specialties-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* Badge Header */
+  .section-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .badge-text {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .badge-line {
+    width: 36px;
+    height: 1.5px;
+    background-color: var(--color-gold);
+  }
+
+  /* Specialties Grid / Flex */
+  .specialties-grid {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .item-divider {
+    width: 1px;
+    height: 38px;
+    background-color: rgba(200, 162, 97, 0.25);
+    flex-shrink: 0;
+  }
+
+  /* Responsive Layout */
+  @media (max-width: 1100px) {
+    .specialties-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .item-divider {
+      display: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .specialties-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .specialties-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

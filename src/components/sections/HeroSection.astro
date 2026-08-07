@@ -1,0 +1,161 @@
+---
+import Button from "../common/Button.astro";
+import escritorioImg from "../../assets/escritorio.png";
+---
+
+<section
+  class="hero-section"
+  style={`background-image: linear-gradient(90deg, #0a0b0d 0%, #0a0b0d 28%, rgba(10, 11, 13, 0.85) 55%, rgba(10, 11, 13, 0.2) 100%), url('${escritorioImg.src}');`}
+>
+  <div class="hero-container">
+    <!-- Left Text Content -->
+    <div class="hero-content">
+      <div class="hero-subtitle">
+        <span class="subtitle-line"></span>
+        <span class="subtitle-text">EXCELÊNCIA. ESTRATÉGIA. RESULTADOS.</span>
+      </div>
+
+      <h1 class="hero-title">
+        Soluções jurídicas estratégicas para proteger o que mais importa.
+      </h1>
+
+      <p class="hero-description">
+        Atuamos de forma preventiva e contenciosa, com foco em empresas e
+        pessoas que buscam segurança, tranquilidade e melhores resultados.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <Button
+          variant="gold"
+          icon="whatsapp"
+          text="FALAR NO WHATSAPP"
+          href="https://wa.me/554730457491"
+        />
+        <Button
+          variant="outline"
+          icon="calendar"
+          text="AGENDAR REUNIÃO"
+          href="https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o."
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    width: 100%;
+    min-height: 620px;
+    background-color: var(--color-bg-dark);
+    background-size: 100% 100%, 46% auto;
+    background-position: left center, right center;
+    background-repeat: no-repeat;
+    padding: 150px 0 95px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    width: 100%;
+  }
+
+  /* Left Column Content */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 620px;
+  }
+
+  .hero-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .subtitle-line {
+    width: 32px;
+    height: 1.5px;
+    background-color: var(--color-gold);
+    display: inline-block;
+  }
+
+  .subtitle-text {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif-display);
+    font-size: 3.2rem;
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--color-text-white);
+    letter-spacing: -0.01em;
+  }
+
+  .hero-description {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .hero-section {
+      padding-top: 110px;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+    }
+
+    .hero-content {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-section {
+      padding: 105px 0 65px 0;
+      min-height: auto;
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+    }
+
+    .hero-description {
+      font-size: 0.95rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero-actions :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

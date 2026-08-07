@@ -1,0 +1,160 @@
+---
+import Button from '../common/Button.astro';
+
+const navLinks = [
+  { label: 'QUEM SOMOS', href: '#quem-somos' },
+  { label: 'ÁREAS DE ATUAÇÃO', href: '#areas-de-atuacao' },
+  { label: 'EQUIPE', href: '#equipe' },
+  { label: 'CONTATO', href: '#contato' },
+];
+---
+
+<div id="mobile-menu-drawer" class="mobile-menu-overlay">
+  <div class="mobile-menu-content">
+    <div class="mobile-menu-header">
+      <div class="logo-text">
+        <span class="logo-primary">GOM</span>
+        <span class="logo-secondary">ADVOGADOS</span>
+      </div>
+      <button id="close-mobile-menu" class="close-btn" aria-label="Fechar Menu">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-nav-links">
+      {navLinks.map((link) => (
+        <a href={link.href} class="mobile-nav-link">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="mobile-menu-footer">
+      <Button 
+        variant="gold" 
+        icon="whatsapp" 
+        text="FALAR NO WHATSAPP" 
+        href="https://wa.me/554730457491?text=Ol%C3%A1%20GOM%20Advogados!" 
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  // Dynamic Mobile Menu drawer toggle logic
+  const drawer = document.getElementById('mobile-menu-drawer');
+  const closeBtn = document.getElementById('close-mobile-menu');
+  const openBtns = document.querySelectorAll('.hamburger-btn');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function openMenu() {
+    if (drawer) drawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    if (drawer) drawer.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach((btn) => btn.addEventListener('click', openMenu));
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  mobileLinks.forEach((link) => link.addEventListener('click', closeMenu));
+</script>
+
+<style>
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 11, 13, 0.96);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    justify-content: space-between;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-primary {
+    font-family: var(--font-serif-title);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gold);
+  }
+
+  .logo-secondary {
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.38em;
+    margin-top: 2px;
+  }
+
+  .close-btn {
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 40px 0;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--color-gold);
+  }
+
+  .mobile-menu-footer {
+    width: 100%;
+    margin-top: auto;
+  }
+</style>

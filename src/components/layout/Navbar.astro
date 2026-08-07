@@ -1,0 +1,51 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+
+const navLinks = [
+  { label: 'QUEM SOMOS', href: '#quem-somos' },
+  { label: 'ÁREAS DE ATUAÇÃO', href: '#areas-de-atuacao' },
+  { label: 'EQUIPE', href: '#equipe' },
+  { label: 'CONTATO', href: '#contato' },
+];
+---
+
+<nav class={`main-nav ${className}`}>
+  {navLinks.map((link) => (
+    <a href={link.href} class="nav-link">
+      {link.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    color: var(--color-gold);
+  }
+
+  @media (max-width: 1024px) {
+    .main-nav {
+      display: none;
+    }
+  }
+</style>

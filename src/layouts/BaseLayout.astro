@@ -1,0 +1,91 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "GOM Advogados | Soluções Jurídicas Estratégicas",
+  description = "Soluções jurídicas estratégicas para proteger o que mais importa. Atuamos de forma preventiva e contenciosa em Itajaí/SC."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/images/escritorio.png" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-bg-dark: #0a0b0d;
+    --color-bg-dark-card: #121417;
+    --color-bg-light: #fdfbf7;
+    --color-card-light: #f7f4ee;
+    --color-gold: #c8a261;
+    --color-gold-hover: #dbb370;
+    --color-gold-light: rgba(200, 162, 97, 0.12);
+    --color-gold-border: rgba(200, 162, 97, 0.4);
+    --color-text-white: #ffffff;
+    --color-text-muted: #9ba3af;
+    --color-text-dark: #1b1e23;
+    --color-border-light: #e5dfd5;
+
+    --font-serif-display: 'Playfair Display', Georgia, serif;
+    --font-serif-title: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

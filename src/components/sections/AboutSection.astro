@@ -1,0 +1,335 @@
+---
+import ValueItem from '../common/ValueItem.astro';
+import StatItem from '../common/StatItem.astro';
+import recepcaoImg from '../../assets/recepcao.png';
+
+const values = [
+  {
+    icon: 'shield-check' as const,
+    title: 'ÉTICA',
+    description: 'Agimos com integridade, transparência e respeito em todas as relações.'
+  },
+  {
+    icon: 'people' as const,
+    title: 'COMPROMISSO',
+    description: 'Dedicação total aos objetivos e resultados dos nossos clientes.'
+  },
+  {
+    icon: 'target' as const,
+    title: 'ESTRATÉGIA',
+    description: 'Soluções jurídicas inteligentes, alinhadas a cada necessidade.'
+  },
+  {
+    icon: 'award' as const,
+    title: 'EXCELÊNCIA',
+    description: 'Padrões elevados de atuação e constante busca por evolução.'
+  }
+];
+
+const stats = [
+  {
+    icon: 'calendar' as const,
+    number: '+10',
+    label: 'ANOS DE ATUAÇÃO',
+    description: 'Experiência sólida e reconhecimento no mercado.'
+  },
+  {
+    icon: 'user' as const,
+    number: '100%',
+    label: 'ATENDIMENTO PERSONALIZADO',
+    description: 'Soluções jurídicas desenvolvidas para cada clientes.'
+  },
+  {
+    icon: 'handshake' as const,
+    number: '500+',
+    label: 'CLIENTES ATENDIDOS',
+    description: 'Histórias de confiança que se transformam em parcerias.'
+  },
+  {
+    icon: 'chart-up' as const,
+    number: 'RESULTADOS',
+    label: 'QUE GERAM VALOR',
+    description: 'Atuação estratégica que protege, previne e gera segurança.'
+  }
+];
+---
+
+<section id="quem-somos" class="about-section">
+  <!-- Top Split Area -->
+  <div class="about-top">
+    <div class="about-top-container">
+      <!-- Left Column Content -->
+      <div class="about-content">
+        <div class="badge-wrapper">
+          <div class="badge-line"></div>
+          <span class="badge-text">QUEM SOMOS</span>
+        </div>
+
+        <h2 class="about-title">
+          Excelência jurídica <br />
+          <span class="title-gold">com propósito.</span>
+        </h2>
+
+        <div class="title-divider"></div>
+
+        <p class="about-paragraph">
+          A GOM Advogados Associados nasceu com o compromisso de oferecer soluções jurídicas estratégicas, personalizadas e eficientes.
+        </p>
+
+        <p class="about-paragraph">
+          Atuamos de forma consultiva e resolutiva, prevenindo riscos e construindo segurança para pessoas e empresas.
+        </p>
+
+        <!-- 4 Value Pillars Box -->
+        <div class="values-box">
+          <ValueItem icon={values[0].icon} title={values[0].title} description={values[0].description} />
+          <div class="value-divider"></div>
+          <ValueItem icon={values[1].icon} title={values[1].title} description={values[1].description} />
+          <div class="value-divider"></div>
+          <ValueItem icon={values[2].icon} title={values[2].title} description={values[2].description} />
+          <div class="value-divider"></div>
+          <ValueItem icon={values[3].icon} title={values[3].title} description={values[3].description} />
+        </div>
+      </div>
+
+      <!-- Right Reception Image -->
+      <div class="about-visual">
+        <img 
+          src={recepcaoImg.src} 
+          alt="Recepção GOM Advogados Associados" 
+          class="reception-image" 
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Dark Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-container">
+      {stats.map((s, idx) => (
+        <>
+          {idx > 0 && <div class="stat-divider" />}
+          <StatItem 
+            icon={s.icon}
+            number={s.number} 
+            label={s.label} 
+            description={s.description} 
+          />
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    width: 100%;
+    background-color: var(--color-bg-light);
+    overflow: hidden;
+  }
+
+  .about-top {
+    width: 100%;
+    background-color: var(--color-bg-light);
+  }
+
+  /* Strict 50% / 50% grid on desktop */
+  .about-top-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 32px 55px 32px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+  }
+
+  /* Left Content Column */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .badge-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .badge-line {
+    width: 32px;
+    height: 1.5px;
+    background-color: var(--color-gold);
+  }
+
+  .badge-text {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .about-title {
+    font-family: var(--font-serif-display);
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--color-text-dark);
+    letter-spacing: -0.01em;
+  }
+
+  .title-gold {
+    color: var(--color-gold);
+  }
+
+  .title-divider {
+    width: 40px;
+    height: 1.5px;
+    background-color: var(--color-gold);
+    margin: 14px 0 16px 0;
+  }
+
+  .about-paragraph {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    line-height: 1.58;
+    color: #475569;
+    margin-bottom: 10px;
+  }
+
+  /* 4 Value Pillars Box */
+  .values-box {
+    margin-top: 20px;
+    background-color: var(--color-card-light);
+    border-radius: 4px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 0;
+    border: 1px solid #ede8e0;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .value-divider {
+    width: 1px;
+    flex-shrink: 0;
+    background-color: #e2dcd2;
+    margin: 8px 0;
+  }
+
+  /* Right Reception Image Column */
+  .about-visual {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    min-width: 0;
+  }
+
+  .reception-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Bottom Stats Bar */
+  .stats-bar {
+    width: 100%;
+    background-color: var(--color-bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 0;
+  }
+
+  .stats-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Responsive Adjustments (Mobile - Exact Match to Mobile Image) */
+  @media (max-width: 768px) {
+    .about-top-container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 0 32px 0;
+    }
+
+    .about-visual {
+      order: 1;
+      height: 260px;
+      min-height: 260px;
+      border-radius: 0;
+    }
+
+    .about-content {
+      order: 2;
+      padding: 24px 0 0 0;
+    }
+
+    .about-content > :not(.values-box) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .values-box {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: space-between;
+      padding: 0;
+      background-color: var(--color-card-light);
+      border: none;
+      border-radius: 0;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .value-divider {
+      display: block;
+      width: 1.5px;
+      flex-shrink: 0;
+      background-color: var(--color-gold);
+      margin: 6px 0;
+    }
+
+    .stats-bar {
+      padding: 0;
+    }
+
+    .stats-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0 16px;
+      width: 100%;
+    }
+
+    .stat-divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(200, 162, 97, 0.25);
+    }
+  }
+</style>
