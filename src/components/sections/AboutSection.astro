@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import ValueItem from '../common/ValueItem.astro';
 import StatItem from '../common/StatItem.astro';
 import recepcaoImg from '../../assets/recepcao.png';
@@ -94,9 +95,11 @@ const stats = [
 
       <!-- Right Reception Image -->
       <div class="about-visual">
-        <img 
-          src={recepcaoImg.src} 
+        <Image 
+          src={recepcaoImg} 
           alt="Recepção GOM Advogados Associados" 
+          widths={[400, 600, 800, 1200]}
+          sizes="(min-width: 768px) 560px, 100vw"
           class="reception-image" 
         />
       </div>
