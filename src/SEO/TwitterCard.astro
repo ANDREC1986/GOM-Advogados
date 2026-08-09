@@ -1,0 +1,21 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  card?: string;
+}
+
+const {
+  title = "GOM Advogados | Soluções Jurídicas Estratégicas",
+  description = "Soluções jurídicas estratégicas para proteger o que mais importa. Atuamos de forma preventiva e contenciosa em Itajaí/SC.",
+  image = "https://gomadvogados.com.br/og-image.png",
+  card = "summary_large_image"
+} = Astro.props;
+---
+
+<meta name="twitter:card" content={card} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+

@@ -1,0 +1,30 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  locale?: string;
+  siteName?: string;
+}
+
+const {
+  title = "GOM Advogados | Soluções Jurídicas Estratégicas",
+  description = "Soluções jurídicas estratégicas para proteger o que mais importa. Atuamos de forma preventiva e contenciosa em Itajaí/SC.",
+  url = "https://gomadvogados.com.br/",
+  image = "https://gomadvogados.com.br/og-image.png",
+  locale = "pt_BR",
+  siteName = "GOM Advogados Associados"
+} = Astro.props;
+---
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:image" content={image} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={locale} />
+

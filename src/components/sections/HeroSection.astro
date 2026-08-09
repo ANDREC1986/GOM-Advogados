@@ -1,28 +1,41 @@
 ---
+import { Image } from "astro:assets";
 import Button from "../common/Button.astro";
 import escritorioImg from "../../assets/escritorio.png";
 ---
 
-<section
-  class="hero-section"
-  style={`--hero-bg-img: url('${escritorioImg.src}');`}
->
+<section class="hero-section" id="hero">
+  <!-- Layer 1: Background Image & Gradient Overlay -->
+  <div class="hero-visual">
+    <Image
+      src={escritorioImg}
+      alt="Escritório GOM Advogados Associados"
+      widths={[400, 800, 1200, 1600]}
+      sizes="(min-width: 1024px) 580px, 100vw"
+      class="hero-bg-image"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Layer 2: Foreground Content Container -->
   <div class="hero-container">
-    <!-- Left Text Content -->
     <div class="hero-content">
-      <div class="hero-subtitle">
-        <span class="subtitle-line"></span>
-        <span class="subtitle-text">EXCELÊNCIA. ESTRATÉGIA. RESULTADOS.</span>
+      <!-- Constrained Text Wrapper -->
+      <div class="hero-text-wrapper">
+        <div class="hero-subtitle">
+          <span class="subtitle-line"></span>
+          <span class="subtitle-text">EXCELÊNCIA. ESTRATÉGIA. RESULTADOS.</span>
+        </div>
+
+        <h1 class="hero-title">
+          Soluções jurídicas estratégicas para proteger o que mais importa.
+        </h1>
+
+        <p class="hero-description">
+          Atuamos de forma preventiva e contenciosa, com foco em empresas e
+          pessoas que buscam segurança, tranquilidade e melhores resultados.
+        </p>
       </div>
-
-      <h1 class="hero-title">
-        Soluções jurídicas estratégicas para proteger o que mais importa.
-      </h1>
-
-      <p class="hero-description">
-        Atuamos de forma preventiva e contenciosa, com foco em empresas e
-        pessoas que buscam segurança, tranquilidade e melhores resultados.
-      </p>
 
       <!-- Action Buttons -->
       <div class="hero-actions">
@@ -44,43 +57,83 @@ import escritorioImg from "../../assets/escritorio.png";
 </section>
 
 <style>
+  /* Mobile First Base Styles */
   .hero-section {
+    position: relative;
     width: 100%;
-    min-height: 620px;
+    min-height: 540px;
     background-color: var(--color-bg-dark);
-    background-image: linear-gradient(90deg, #0a0b0d 0%, #0a0b0d 28%, rgba(10, 11, 13, 0.85) 55%, rgba(10, 11, 13, 0.2) 100%), var(--hero-bg-img);
-    background-size: 100% 100%, 46% auto;
-    background-position: left center, right center;
-    background-repeat: no-repeat;
-    padding: 150px 0 95px 0;
+    padding: 110px 0 60px 0;
     display: flex;
     align-items: center;
-    position: relative;
+    overflow: hidden;
   }
 
+  /* Layer 1: Background Visual Container */
+  .hero-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Gradient Overlay over image */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 11, 13, 0.65) 0%,
+      rgba(10, 11, 13, 0.45) 100%
+    );
+  }
+
+  /* Layer 2: Main Content Container */
   .hero-container {
+    position: relative;
+    z-index: 10;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 20px;
     width: 100%;
   }
 
-  /* Left Column Content */
+  /* Text Content Column */
   .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    max-width: 620px;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  /* Constrained Text Container for Mobile */
+  .hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 380px;
   }
 
   .hero-subtitle {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .subtitle-line {
-    width: 32px;
+    width: 24px;
     height: 1.5px;
     background-color: var(--color-gold);
     display: inline-block;
@@ -88,78 +141,135 @@ import escritorioImg from "../../assets/escritorio.png";
 
   .subtitle-text {
     font-family: var(--font-sans);
-    font-size: 0.76rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     color: var(--color-gold);
     text-transform: uppercase;
   }
 
   .hero-title {
     font-family: var(--font-serif-display);
-    font-size: 3.2rem;
+    font-size: 1.65rem;
     font-weight: 600;
-    line-height: 1.18;
+    line-height: 1.22;
     color: var(--color-text-white);
     letter-spacing: -0.01em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   }
 
   .hero-description {
     font-family: var(--font-sans);
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
     font-weight: 400;
-    max-width: 540px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   }
 
   .hero-actions {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     gap: 16px;
-    margin-top: 8px;
-    flex-wrap: wrap;
+    margin-top: 4px;
   }
 
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
+  .hero-actions :global(.btn) {
+    width: 100%;
+  }
+
+  /* Tablet Enhancements (min-width: 640px) */
+  @media (min-width: 640px) {
     .hero-section {
-      padding-top: 110px;
-      background-image: linear-gradient(180deg, rgba(10, 11, 13, 0.88) 0%, rgba(10, 11, 13, 0.82) 100%), var(--hero-bg-img);
-      background-size: 100% 100%, cover;
-      background-position: center, center;
+      min-height: 580px;
+    }
+
+    .hero-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(10, 11, 13, 0.85) 0%,
+        rgba(10, 11, 13, 0.75) 100%
+      );
+    }
+
+    .hero-container {
+      padding: 0 32px;
+    }
+
+    .hero-content {
+      gap: 24px;
+    }
+
+    .hero-text-wrapper {
+      max-width: 540px;
+      gap: 18px;
+    }
+
+    .subtitle-line {
+      width: 32px;
+    }
+
+    .subtitle-text {
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
     }
 
     .hero-title {
       font-size: 2.6rem;
     }
 
-    .hero-content {
-      max-width: 100%;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .hero-section {
-      padding: 105px 0 65px 0;
-      min-height: auto;
-    }
-
-    .hero-title {
-      font-size: 2.1rem;
-    }
-
     .hero-description {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
     }
 
     .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .hero-actions :global(.btn) {
-      width: 100%;
+      width: auto;
+    }
+  }
+
+  /* Desktop Enhancements (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .hero-section {
+      min-height: 620px;
+      padding: 150px 0 95px 0;
+    }
+
+    /* Fixed 580px width visual layer anchored to the right side on desktop */
+    .hero-visual {
+      left: auto;
+      right: 0;
+      width: 1200px;
+      height: 100%;
+      object-position: unset;
+    }
+
+    /* Horizontal gradient blending desktop text section into the image */
+    .hero-overlay {
+      background: linear-gradient(
+        90deg,
+        #0a0b0d 0%,
+        rgba(10, 11, 13, 0.85) 45%,
+        rgba(10, 11, 13, 0.2) 100%
+      );
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .hero-text-wrapper {
+      max-width: 100%;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
     }
   }
 </style>

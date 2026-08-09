@@ -22,10 +22,9 @@ const navLinks = [
 </nav>
 
 <style>
+  /* Mobile First: Hidden on small screens */
   .main-nav {
-    display: flex;
-    align-items: center;
-    gap: 36px;
+    display: none;
   }
 
   .nav-link {
@@ -43,9 +42,12 @@ const navLinks = [
     color: var(--color-gold);
   }
 
-  @media (max-width: 1024px) {
+  /* Desktop View */
+  @media (min-width: 1024px) {
     .main-nav {
-      display: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
     }
   }
 </style>

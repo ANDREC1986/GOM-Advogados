@@ -122,6 +122,7 @@ const stats = [
 </section>
 
 <style>
+  /* Mobile First Base Styles */
   .about-section {
     width: 100%;
     background-color: var(--color-bg-light);
@@ -133,24 +134,50 @@ const stats = [
     background-color: var(--color-bg-light);
   }
 
-  /* Strict 50% / 50% grid on desktop */
   .about-top-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 60px 32px 55px 32px;
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 48px;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 0 32px 0;
   }
 
-  /* Left Content Column */
+  /* Image Column First on Mobile */
+  .about-visual {
+    order: 1;
+    width: 100%;
+    height: 260px;
+    min-height: 260px;
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    min-width: 0;
+  }
+
+  .reception-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Content Column Second on Mobile */
   .about-content {
+    order: 2;
     display: flex;
     flex-direction: column;
     width: 100%;
     min-width: 0;
+    padding: 24px 0 0 0;
+  }
+
+  .about-content > :not(.values-box) {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .badge-wrapper {
@@ -207,41 +234,24 @@ const stats = [
   .values-box {
     margin-top: 20px;
     background-color: var(--color-card-light);
-    border-radius: 4px;
+    border-radius: 0;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: stretch;
     justify-content: space-between;
     padding: 0;
-    border: 1px solid #ede8e0;
+    border: none;
     width: 100%;
     min-width: 0;
   }
 
   .value-divider {
-    width: 1px;
-    flex-shrink: 0;
-    background-color: #e2dcd2;
-    margin: 8px 0;
-  }
-
-  /* Right Reception Image Column */
-  .about-visual {
-    width: 100%;
-    height: 100%;
-    min-height: 420px;
-    position: relative;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    min-width: 0;
-  }
-
-  .reception-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
     display: block;
+    width: 1.5px;
+    flex-shrink: 0;
+    background-color: var(--color-gold);
+    margin: 6px 0;
   }
 
   /* Bottom Stats Bar */
@@ -249,87 +259,77 @@ const stats = [
     width: 100%;
     background-color: var(--color-bg-dark);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 24px 0;
+    padding: 0;
   }
 
   .stats-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 16px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
   }
 
   .stat-divider {
-    width: 1px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.12);
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(200, 162, 97, 0.25);
   }
 
-  /* Responsive Adjustments (Mobile - Exact Match to Mobile Image) */
-  @media (max-width: 768px) {
+  /* Tablet & Desktop Enhancements (min-width: 768px) */
+  @media (min-width: 768px) {
     .about-top-container {
-      grid-template-columns: 1fr;
-      gap: 24px;
-      padding: 0 0 32px 0;
-    }
-
-    .about-visual {
-      order: 1;
-      height: 260px;
-      min-height: 260px;
-      border-radius: 0;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 48px;
+      padding: 60px 32px 55px 32px;
+      align-items: center;
     }
 
     .about-content {
-      order: 2;
-      padding: 24px 0 0 0;
+      order: 1;
+      padding: 0;
     }
 
     .about-content > :not(.values-box) {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .about-visual {
+      order: 2;
+      height: 100%;
+      min-height: 420px;
+      border-radius: 6px;
     }
 
     .values-box {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: stretch;
-      justify-content: space-between;
-      padding: 0;
-      background-color: var(--color-card-light);
-      border: none;
-      border-radius: 0;
-      width: 100%;
-      min-width: 0;
+      border-radius: 4px;
+      border: 1px solid #ede8e0;
     }
 
     .value-divider {
-      display: block;
-      width: 1.5px;
-      flex-shrink: 0;
-      background-color: var(--color-gold);
-      margin: 6px 0;
+      width: 1px;
+      background-color: #e2dcd2;
+      margin: 8px 0;
     }
 
     .stats-bar {
-      padding: 0;
+      padding: 24px 0;
     }
 
     .stats-container {
-      display: flex;
-      flex-direction: column;
-      padding: 0 16px;
-      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
     }
 
     .stat-divider {
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: rgba(200, 162, 97, 0.25);
+      width: 1px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.12);
     }
   }
 </style>

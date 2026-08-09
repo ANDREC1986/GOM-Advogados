@@ -1,15 +1,22 @@
 ---
-import Button from '../common/Button.astro';
-import Navbar from './Navbar.astro';
+import Button from "../common/Button.astro";
+import Navbar from "./Navbar.astro";
+import { Image } from "astro:assets";
+import Logo from "../../assets/old/logos/GOM-Advogados-Logo.png";
 ---
 
-<header class="site-header">
+<header class="site-header" id="topo">
   <div class="header-container">
     <!-- Logo -->
-    <a href="/" class="logo">
-      <div class="logo-text">
-        <span class="logo-primary">GOM</span>
-        <span class="logo-secondary">ADVOGADOS</span>
+    <a href="#topo" class="logo" id="logo-link">
+      <div class="logo-container">
+        <Image
+          src={Logo}
+          alt="GOM Advogados"
+          widths={[200, 400, 800]}
+          sizes="(min-width: 1024px) 400px, (min-width: 480px) 300px, 200px"
+          class="logo-site"
+        />
       </div>
     </a>
 
@@ -19,17 +26,25 @@ import Navbar from './Navbar.astro';
     <!-- Header CTA Button & Hamburger -->
     <div class="header-actions">
       <div class="desktop-cta">
-        <Button 
-          variant="outline" 
-          icon="calendar" 
-          text="AGENDAR REUNIÃO" 
-          href="https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o." 
+        <Button
+          variant="outline"
+          icon="calendar"
+          text="AGENDAR REUNIÃO"
+          href="https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o."
         />
       </div>
 
       <!-- Hamburger Menu Button (Mobile Only) -->
       <button class="hamburger-btn" aria-label="Abrir Menu">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round">
+        <svg
+          viewBox="0 0 24 24"
+          width="26"
+          height="26"
+          fill="none"
+          stroke="var(--color-gold)"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -41,35 +56,72 @@ import Navbar from './Navbar.astro';
 
 <script>
   // Mobile Sticky Header script to add solid black background on scroll
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector(".site-header");
   if (header) {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 20) {
-        header.classList.add('scrolled');
+        header.classList.add("scrolled");
       } else {
-        header.classList.remove('scrolled');
+        header.classList.remove("scrolled");
       }
+    });
+  }
+
+  // Smooth scroll to top when clicking logo without page reload
+  const logoLink = document.getElementById("logo-link");
+  if (logoLink) {
+    logoLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      history.pushState(null, "", "#topo");
     });
   }
 </script>
 
 <style>
+  /* Mobile First Base Styles */
+  .logo-site {
+    width: 180px;
+    height: auto;
+    display: block;
+    transition: width 0.3s ease;
+  }
+
   .site-header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(180deg, rgba(10, 11, 13, 0.9) 0%, rgba(10, 11, 13, 0.45) 65%, rgba(10, 11, 13, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(10, 11, 13, 0.9) 0%,
+      rgba(10, 11, 13, 0.45) 65%,
+      rgba(10, 11, 13, 0) 100%
+    );
     border-bottom: none;
-    padding: 28px 0 20px 0;
+    padding: 16px 0;
     z-index: 1000;
-    transition: background 0.3s ease, background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      background 0.3s ease,
+      padding 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .site-header.scrolled {
+    background-color: #0a0b0d !important;
+    background: #0a0b0d !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    padding: 12px 0;
   }
 
   .header-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,30 +132,6 @@ import Navbar from './Navbar.astro';
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    gap: 2px;
-  }
-
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-
-  .logo-primary {
-    font-family: var(--font-serif-title);
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--color-gold);
-    letter-spacing: 0.08em;
-  }
-
-  .logo-secondary {
-    font-family: var(--font-sans);
-    font-size: 0.62rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 0.42em;
-    margin-top: 2px;
   }
 
   /* Header Actions */
@@ -113,9 +141,13 @@ import Navbar from './Navbar.astro';
     gap: 20px;
   }
 
-  /* Hamburger Menu Button (Hidden on Desktop) */
-  .hamburger-btn {
+  .desktop-cta {
     display: none;
+  }
+
+  /* Hamburger Menu Button (Visible on Mobile/Tablet) */
+  .hamburger-btn {
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 6px;
@@ -127,48 +159,37 @@ import Navbar from './Navbar.astro';
     background-color: rgba(200, 162, 97, 0.1);
   }
 
-  /* Responsive Breakpoints (Mobile & Tablet) */
-  @media (max-width: 1024px) {
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 16px 0;
+  /* Tablet Enhancements (min-width: 640px) */
+  @media (min-width: 640px) {
+    .desktop-cta {
+      display: block;
     }
 
-    .site-header.scrolled {
-      background: #0a0b0d !important;
-      background-color: #0a0b0d !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-      padding: 12px 0;
-    }
-
-    .hamburger-btn {
-      display: flex;
+    .logo-site {
+      width: 200px;
     }
   }
 
-  @media (max-width: 640px) {
-    .desktop-cta {
-      display: none;
+  /* Desktop Enhancements (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .site-header {
+      padding: 24px 0;
+    }
+
+    .site-header.scrolled {
+      padding: 14px 0;
+    }
+
+    .site-header.scrolled .logo-site {
+      width: 200px;
     }
 
     .header-container {
-      padding: 0 20px;
+      padding: 0 32px;
     }
 
-    .logo-primary {
-      font-size: 1.8rem;
-    }
-
-    .logo-secondary {
-      font-size: 0.54rem;
-      letter-spacing: 0.35em;
-    }
-
-    .logo-divider {
-      width: 38px;
+    .hamburger-btn {
+      display: none;
     }
   }
 </style>

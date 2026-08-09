@@ -36,6 +36,7 @@ const specialties = [
 </section>
 
 <style>
+  /* Mobile First Base Layout */
   .specialties-section {
     width: 100%;
     background-color: var(--color-bg-light);
@@ -46,7 +47,7 @@ const specialties = [
   .specialties-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,46 +77,53 @@ const specialties = [
     background-color: var(--color-gold);
   }
 
-  /* Specialties Grid / Flex */
+  /* Specialties Grid (1 Column by default on small mobile) */
   .specialties-grid {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .item-divider {
-    width: 1px;
-    height: 38px;
-    background-color: rgba(200, 162, 97, 0.25);
-    flex-shrink: 0;
+    display: none;
   }
 
-  /* Responsive Layout */
-  @media (max-width: 1100px) {
+  /* Small Mobile / Phablet (min-width: 440px) */
+  @media (min-width: 440px) {
     .specialties-grid {
-      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Tablet Layout (min-width: 680px) */
+  @media (min-width: 680px) {
+    .specialties-container {
+      padding: 0 32px;
+    }
+
+    .specialties-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
+  }
+
+  /* Desktop Flex Layout (min-width: 1100px) */
+  @media (min-width: 1100px) {
+    .specialties-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
 
     .item-divider {
-      display: none;
-    }
-  }
-
-  @media (max-width: 680px) {
-    .specialties-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-  }
-
-  @media (max-width: 440px) {
-    .specialties-grid {
-      grid-template-columns: 1fr;
+      display: block;
+      width: 1px;
+      height: 38px;
+      background-color: rgba(200, 162, 97, 0.25);
+      flex-shrink: 0;
     }
   }
 </style>

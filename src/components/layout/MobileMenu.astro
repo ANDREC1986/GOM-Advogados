@@ -157,4 +157,11 @@ const navLinks = [
     width: 100%;
     margin-top: auto;
   }
+
+  /* Desktop View: Ensure drawer stays hidden if viewport scales up */
+  @media (min-width: 1024px) {
+    .mobile-menu-overlay {
+      display: none !important;
+    }
+  }
 </style>

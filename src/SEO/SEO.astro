@@ -1,0 +1,25 @@
+---
+interface Props {
+  description?: string;
+  url?: string;
+  author?: string;
+  themeColor?: string;
+  preloadImage?: string;
+}
+
+const {
+  description = "Soluções jurídicas estratégicas para proteger o que mais importa. Atuamos de forma preventiva e contenciosa em Itajaí/SC.",
+  url = "https://gomadvogados.com.br/",
+  author = "GOM Advogados Associados",
+  themeColor = "#0a0b0d",
+  preloadImage = "https://gomadvogados.com.br/og-image.png"
+} = Astro.props;
+---
+
+<meta name="description" content={description} />
+<link rel="canonical" href={url} />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content={themeColor} />
+<meta name="author" content={author} />
+<link rel="preload" as="image" href={preloadImage} />
+

@@ -1,0 +1,46 @@
+---
+---
+
+<!-- Script de Proteção (Bloqueio de Salvar, Imprimir, Copiar e Inspecionar) -->
+<script>
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+  document.addEventListener('selectstart', (e) => e.preventDefault());
+  document.addEventListener('dragstart', (e) => e.preventDefault());
+  document.addEventListener('copy', (e) => e.preventDefault());
+  document.addEventListener('cut', (e) => e.preventDefault());
+
+  document.addEventListener('keydown', (e) => {
+    const isCmdOrCtrl = e.ctrlKey || e.metaKey;
+    const key = e.key.toLowerCase();
+
+    if (
+      (isCmdOrCtrl && ['s', 'p', 'u', 'a', 'c', 'x'].includes(key)) ||
+      e.key === 'F12' ||
+      (isCmdOrCtrl && e.shiftKey && ['i', 'j', 'c'].includes(key))
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  });
+</script>
+
+<style is:global>
+  body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+
+  @media print {
+    html, body {
+      display: none !important;
+    }
+  }
+</style>
