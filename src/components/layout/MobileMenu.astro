@@ -1,23 +1,39 @@
 ---
-import Button from '../common/Button.astro';
+import Button from "../common/Button.astro";
+import Logo from "../../assets/old/logos/GOM-Advogados-Logo.png";
+import { Image } from "astro:assets";
 
 const navLinks = [
-  { label: 'QUEM SOMOS', href: '#quem-somos' },
-  { label: 'ÁREAS DE ATUAÇÃO', href: '#areas-de-atuacao' },
-  { label: 'EQUIPE', href: '#equipe' },
-  { label: 'CONTATO', href: '#contato' },
+  { label: "QUEM SOMOS", href: "#quem-somos" },
+  { label: "ÁREAS DE ATUAÇÃO", href: "#areas-de-atuacao" },
+  { label: "EQUIPE", href: "#equipe" },
+  { label: "CONTATO", href: "#contato" },
 ];
 ---
 
 <div id="mobile-menu-drawer" class="mobile-menu-overlay">
   <div class="mobile-menu-content">
     <div class="mobile-menu-header">
-      <div class="logo-text">
-        <span class="logo-primary">GOM</span>
-        <span class="logo-secondary">ADVOGADOS</span>
+      <div class="logo-container">
+        <Image
+          src={Logo}
+          alt="GOM Advogados"
+          widths={[140]}
+          sizes="140px"
+          class="logo-site"
+          loading="eager"
+        />
       </div>
       <button id="close-mobile-menu" class="close-btn" aria-label="Fechar Menu">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round">
+        <svg
+          viewBox="0 0 24 24"
+          width="28"
+          height="28"
+          fill="none"
+          stroke="var(--color-gold)"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -25,19 +41,21 @@ const navLinks = [
     </div>
 
     <nav class="mobile-nav-links">
-      {navLinks.map((link) => (
-        <a href={link.href} class="mobile-nav-link">
-          {link.label}
-        </a>
-      ))}
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="mobile-nav-link">
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
 
     <div class="mobile-menu-footer">
-      <Button 
-        variant="gold" 
-        icon="whatsapp" 
-        text="FALAR NO WHATSAPP" 
-        href="https://wa.me/554730457491?text=Ol%C3%A1%20GOM%20Advogados!" 
+      <Button
+        variant="gold"
+        icon="whatsapp"
+        text="FALAR NO WHATSAPP"
+        href="https://wa.me/554730457491?text=Ol%C3%A1%20GOM%20Advogados!"
       />
     </div>
   </div>
@@ -45,27 +63,34 @@ const navLinks = [
 
 <script>
   // Dynamic Mobile Menu drawer toggle logic
-  const drawer = document.getElementById('mobile-menu-drawer');
-  const closeBtn = document.getElementById('close-mobile-menu');
-  const openBtns = document.querySelectorAll('.hamburger-btn');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const drawer = document.getElementById("mobile-menu-drawer");
+  const closeBtn = document.getElementById("close-mobile-menu");
+  const openBtns = document.querySelectorAll(".hamburger-btn");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
   function openMenu() {
-    if (drawer) drawer.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (drawer) drawer.classList.add("active");
+    document.body.style.overflow = "hidden";
   }
 
   function closeMenu() {
-    if (drawer) drawer.classList.remove('active');
-    document.body.style.overflow = '';
+    if (drawer) drawer.classList.remove("active");
+    document.body.style.overflow = "";
   }
 
-  openBtns.forEach((btn) => btn.addEventListener('click', openMenu));
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  mobileLinks.forEach((link) => link.addEventListener('click', closeMenu));
+  openBtns.forEach((btn) => btn.addEventListener("click", openMenu));
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+  mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
 </script>
 
 <style>
+  .logo-site {
+    width: 140px;
+    height: auto;
+    display: block;
+    transition: width 0.3s ease;
+  }
+
   .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -78,7 +103,9 @@ const navLinks = [
     display: flex;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
   }
 
   .mobile-menu-overlay.active {
@@ -91,7 +118,7 @@ const navLinks = [
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 32px 24px;
+    padding: 16px 20px;
     justify-content: space-between;
   }
 
@@ -157,7 +184,11 @@ const navLinks = [
     width: 100%;
     margin-top: auto;
   }
-
+  @media (min-width: 640px) {
+    .logo-site {
+      width: 200px;
+    }
+  }
   /* Desktop View: Ensure drawer stays hidden if viewport scales up */
   @media (min-width: 1024px) {
     .mobile-menu-overlay {

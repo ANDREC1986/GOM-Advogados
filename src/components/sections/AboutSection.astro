@@ -68,16 +68,17 @@ const stats = [
           headline="Excelência jurídica <br /><span class='gold'>com propósito.</span>"
           padding="0 20px"
         />
+        <div class="content-padding">
+          <p class="about-paragraph">
+            A GOM Advogados Associados nasceu com o compromisso de oferecer
+            soluções jurídicas estratégicas, personalizadas e eficientes.
+          </p>
 
-        <p class="about-paragraph">
-          A GOM Advogados Associados nasceu com o compromisso de oferecer
-          soluções jurídicas estratégicas, personalizadas e eficientes.
-        </p>
-
-        <p class="about-paragraph">
-          Atuamos de forma consultiva e resolutiva, prevenindo riscos e
-          construindo segurança para pessoas e empresas.
-        </p>
+          <p class="about-paragraph">
+            Atuamos de forma consultiva e resolutiva, prevenindo riscos e
+            construindo segurança para pessoas e empresas.
+          </p>
+        </div>
 
         <!-- 4 Value Pillars Box -->
         <div class="values-box">
@@ -123,6 +124,11 @@ const stats = [
 
 <style>
   /* Mobile First Base Styles */
+  .content-padding {
+    padding: 0 20px 0 20px;
+    text-align: justify;
+  }
+
   .about-section {
     width: 100%;
     background-color: var(--color-bg-light);
@@ -216,16 +222,6 @@ const stats = [
     height: 1.5px;
     background-color: var(--color-gold);
     margin: 14px 0 16px 0;
-  }
-
-  .about-paragraph {
-    font-family: var(--font-sans);
-    font-size: 0.88rem;
-    font-weight: 500;
-    padding: 0 20px;
-    line-height: 1.58;
-    color: #475569;
-    margin-bottom: 10px;
   }
 
   /* 4 Value Pillars Box */
