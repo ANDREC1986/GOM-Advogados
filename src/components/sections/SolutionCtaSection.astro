@@ -1,0 +1,270 @@
+---
+import Icon from '../common/Icon.astro';
+
+// SolutionCtaSection.astro - Highly polished to match the mockup exactly
+const whatsappUrl =
+  "https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o.";
+
+const highlights = [
+  { icon: "shield", title: "ATENDIMENTO", subtitle: "PERSONALIZADO" },
+  { icon: "cadeado", title: "SIGILO E", subtitle: "CONFIANÇA" },
+  { icon: "target", title: "ESTRATÉGIA", subtitle: "E EFICIÊNCIA" },
+  { icon: "badge", title: "RESULTADOS", subtitle: "QUE GERAM VALOR" },
+];
+---
+
+<section class="solution-cta-section">
+  <!-- Container principal com fundo preto que abriga as duas divs -->
+  <div class="main-black-container">
+    <!-- Primeira parte em cima: Div Flex, Flex Direction Column -->
+    <div class="cta-top-div">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cta-link"
+      >
+        <!-- Gold Shield check icon -->
+        <div class="cta-icon">
+          <Icon name="shield" />
+        </div>
+        <div class="cta-text-content">
+          <h4 class="cta-title">
+            SUA QUESTÃO JURÍDICA<br />MERECE A MELHOR SOLUÇÃO.
+          </h4>
+          <p class="cta-desc">
+            Entre em contato e fale com nossos especialistas.
+          </p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Segunda parte embaixo: Div Flex, Flex Direction Column -->
+    <div class="highlights-bottom-div">
+      <div class="highlights-row">
+        {
+          highlights.map((item) => (
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <Icon name={item.icon} />
+              </div>
+              <div class="highlight-text">
+                <span>{item.title}</span>
+                <span>{item.subtitle}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution-cta-section {
+    display: flex;
+    background-color: var(--color-bg-dark, #0a0b0d);
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Container principal com fundo preto e flex direction column */
+  .main-black-container {
+    max-width: 1280px;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+  }
+
+  /* Primeira parte (CTA) */
+  .cta-top-div {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cta-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    gap: 20px;
+    padding: 20px 16px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 680px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+
+  .cta-link:hover {
+    transform: scale(1.02);
+  }
+
+  .cta-icon {
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cta-icon :global(svg) {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cta-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .cta-title {
+    font-family: var(--font-serif-display), serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-gold);
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .cta-desc {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  /* Segunda parte (Highlights Row) */
+  .highlights-bottom-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .highlights-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 18px 2rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 8px;
+    padding: 2px 4px;
+    box-sizing: border-box;
+  }
+
+  .highlight-item:not(:last-child) {
+    border-right: 1.2px solid rgba(200, 162, 97, 0.2);
+  }
+
+  .highlight-icon {
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+  }
+
+  .highlight-icon :global(svg) {
+    height: 40px;
+    width: auto;
+  }
+
+  .highlight-text {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-text-white);
+  }
+
+  .highlight-text span {
+    line-height: 1.3;
+  }
+
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    .main-black-container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 0 2rem;
+    }
+
+    .cta-top-div {
+      width: auto;
+      flex: 1.2;
+    }
+
+    .cta-link {
+      padding: 40px 0;
+      gap: 22px;
+    }
+
+    .cta-title {
+      font-size: 1.5rem;
+    }
+
+    .cta-desc {
+      font-size: 0.9rem;
+    }
+
+    .highlights-bottom-div {
+      width: auto;
+      flex: 1.8;
+      border-left: 1.2px solid rgba(200, 162, 97, 0.25);
+      border-right: 1.2px solid rgba(200, 162, 97, 0.25);
+      box-sizing: border-box;
+    }
+
+    .highlights-row {
+      padding: 16px 0;
+    }
+
+    .highlight-item:not(:last-child) {
+      border-right: none;
+    }
+
+    .cta-icon :global(svg) {
+      width: 96px;
+      height: 96px;
+    }
+
+    .highlight-icon :global(svg) {
+      height: 48px;
+      width: auto;
+    }
+
+    .highlight-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+  }
+</style>

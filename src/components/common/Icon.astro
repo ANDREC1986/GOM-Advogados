@@ -7,7 +7,7 @@ interface Props {
 
 const { name, size, class: className = "" } = Astro.props;
 
-// Dynamically import all SVG icons from src/assets/icons and src/assets/how-section as raw SVG strings
+// Dynamically import all SVG icons from src/assets/icons, src/assets/how-section and src/assets/area-section as raw SVG strings
 const iconFilesIcons = import.meta.glob<string>("../../assets/icons/*.svg", {
   query: "?raw",
   import: "default",
@@ -20,7 +20,13 @@ const iconFilesHow = import.meta.glob<string>("../../assets/how-section/*.svg", 
   eager: true,
 });
 
-const iconFiles = { ...iconFilesIcons, ...iconFilesHow };
+const iconFilesArea = import.meta.glob<string>("../../assets/area-section/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const iconFiles = { ...iconFilesIcons, ...iconFilesHow, ...iconFilesArea };
 
 const iconAliasMap: Record<string, string> = {
   scale: "../../assets/icons/balança.svg",
@@ -66,6 +72,12 @@ const iconAliasMap: Record<string, string> = {
   searchtext: "../../assets/how-section/searchtext.svg",
   "check-list": "../../assets/how-section/check-list.svg",
   checklist: "../../assets/how-section/check-list.svg",
+
+  // New icons from area-section
+  martelo: "../../assets/area-section/martelo.svg",
+  folha: "../../assets/area-section/folha.svg",
+  negocio: "../../assets/area-section/negocio.svg",
+  cadeado: "../../assets/area-section/cadeado.svg",
 };
 
 const pathKey = iconAliasMap[name] || `../../assets/icons/${name}.svg`;
@@ -73,6 +85,16 @@ const rawSvg = iconFiles[pathKey] || "";
 
 // Process size or class if provided
 let processedSvg = rawSvg;
+if (processedSvg) {
+  // Replace hardcoded black colors with currentColor to support CSS custom styling colors
+  processedSvg = processedSvg
+    .replace(/stroke:black/g, 'stroke:currentColor')
+    .replace(/stroke: black/g, 'stroke:currentColor')
+    .replace(/stroke="black"/g, 'stroke="currentColor"')
+    .replace(/fill:black/g, 'fill:currentColor')
+    .replace(/fill: black/g, 'fill:currentColor')
+    .replace(/fill="black"/g, 'fill="currentColor"');
+}
 if (size && processedSvg) {
   processedSvg = processedSvg.replace(
     /<svg /i,

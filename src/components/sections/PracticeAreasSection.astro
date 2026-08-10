@@ -1,0 +1,242 @@
+---
+import Title from "../common/Title.astro";
+import AreaCard from "../cards/AreaCard.astro";
+import Icon from "../common/Icon.astro";
+
+// Importing actual images from src/assets/area-section/
+import previdenciarioImg from "../../assets/area-section/martelo.png";
+import civilImg from "../../assets/area-section/caneta-preta.png";
+import empresarialImg from "../../assets/area-section/escritório.png";
+import familiaImg from "../../assets/area-section/familia.png";
+import trabalhoImg from "../../assets/area-section/balança.png";
+import tributarioImg from "../../assets/area-section/caneta.png";
+
+const areas = [
+  {
+    image: previdenciarioImg,
+    icon: "martelo",
+    title: "DIREITO PREVIDENCIÁRIO",
+    description:
+      "Aposentadorias, benefícios do INSS, BPC/LOAS, revisões e planejamento previdenciário.",
+  },
+  {
+    image: civilImg,
+    icon: "folha",
+    title: "DIREITO CIVIL",
+    description:
+      "Contratos, responsabilidade civil, indenizações, obrigações e resolução de conflitos.",
+  },
+  {
+    image: empresarialImg,
+    icon: "negocio",
+    title: "DIREITO EMPRESARIAL",
+    description:
+      "Assessoria jurídica completa para empresas, contratos, consultoria e gestão de riscos.",
+  },
+  {
+    image: familiaImg,
+    icon: "people",
+    title: "DIREITO DE FAMÍLIA E SUCESSÕES",
+    description:
+      "Divórcios, guarda, pensão alimentícia, inventários e planejamento sucessório.",
+  },
+  {
+    image: trabalhoImg,
+    icon: "shield",
+    title: "DIREITO DO TRABALHO",
+    description:
+      "Defesa de empregados e empregadores, consultoria trabalhista e contencioso estratégico.",
+  },
+  {
+    image: tributarioImg,
+    icon: "chart",
+    title: "DIREITO TRIBUTÁRIO",
+    description:
+      "Planejamento tributário, consultoria, defesa em execuções fiscais e contencioso tributário.",
+  },
+];
+---
+
+<section id="areas-de-atuacao" class="practice-areas-section">
+  <div class="container">
+    <!-- Coluna da Esquerda (Texto institucional e banner consultivo) -->
+    <div class="content-col">
+      <!-- Header -->
+      <Title
+        badge="ÁREAS DE ATUAÇÃO"
+        headline="Soluções jurídicas completas <br /><span class='gold'>para pessoas e empresas.</span>"
+      />
+
+      <!-- Description Paragraphs -->
+      <div class="desc-wrapper">
+        <p class="about-paragraph">
+          Atuamos de forma estratégica e personalizada em diversas áreas do
+          Direito, oferecendo segurança, eficiência e resultados concretos.
+        </p>
+        <p class="about-paragraph">
+          Nosso compromisso é proteger seus direitos, prevenir riscos e
+          construir soluções jurídicas sob medida para cada necessidade.
+        </p>
+      </div>
+
+      <!-- Consultative Banner -->
+      <div class="consultative-banner">
+        <div class="banner-icon">
+          <Icon name="scale" size={40} />
+        </div>
+        <div class="banner-text">
+          <h4 class="banner-title">ATUAÇÃO CONSULTIVA E RESOLUTIVA</h4>
+          <p class="banner-desc">
+            Mais do que solucionar conflitos, prevenimos riscos e encontramos o
+            melhor caminho para alcançar seus objetivos.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coluna da Direita (Grid de Cards das Áreas) -->
+    <div class="cards-col">
+      <div class="cards-grid">
+        {
+          areas.map((area) => (
+            <AreaCard
+              image={area.image}
+              icon={area.icon}
+              title={area.title}
+              description={area.description}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .practice-areas-section {
+    background-color: var(--color-bg-light);
+    width: 100%;
+    padding: 60px 0;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .content-col {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .desc-wrapper {
+    width: 100%;
+  }
+
+  .about-paragraph {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+  }
+
+  .about-paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Consultative Banner */
+  .consultative-banner {
+    background-color: var(--color-bg-dark-card, #121417);
+    border-radius: 6px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 4px solid var(--color-gold);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 100%;
+  }
+
+  .banner-icon {
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .banner-icon :global(svg) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .banner-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    margin: 0;
+  }
+
+  .banner-desc {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  /* Cards Column */
+  .cards-col {
+    width: 100%;
+  }
+
+  /* Grid Layout (2 columns on mobile by default) */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* Responsive Design */
+  @media (min-width: 600px) {
+    .cards-grid {
+      gap: 20px;
+    }
+  }
+
+  /* Desktop Layout: Split view with 3 columns for cards on the right */
+  @media (min-width: 900px) {
+    .container {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .consultative-banner {
+      padding: 30px;
+    }
+  }
+</style>
