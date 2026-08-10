@@ -7,21 +7,29 @@ interface Props {
 
 const { name, size, class: className = "" } = Astro.props;
 
-// Dynamically import all SVG icons from src/assets/icons as raw SVG strings
-const iconFiles = import.meta.glob<string>("../../assets/icons/*.svg", {
+// Dynamically import all SVG icons from src/assets/icons and src/assets/how-section as raw SVG strings
+const iconFilesIcons = import.meta.glob<string>("../../assets/icons/*.svg", {
   query: "?raw",
   import: "default",
   eager: true,
 });
+
+const iconFilesHow = import.meta.glob<string>("../../assets/how-section/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const iconFiles = { ...iconFilesIcons, ...iconFilesHow };
 
 const iconAliasMap: Record<string, string> = {
   scale: "../../assets/icons/balança.svg",
   balanca: "../../assets/icons/balança.svg",
   balança: "../../assets/icons/balança.svg",
   
-  chart: "../../assets/icons/grafico-oscilante.svg",
-  grafico: "../../assets/icons/grafico-oscilante.svg",
-  "grafico-oscilante": "../../assets/icons/grafico-oscilante.svg",
+  chart: "../../assets/how-section/grafico-oscilante.svg",
+  grafico: "../../assets/how-section/grafico-oscilante.svg",
+  "grafico-oscilante": "../../assets/how-section/grafico-oscilante.svg",
 
   people: "../../assets/icons/familia.svg",
   familia: "../../assets/icons/familia.svg",
@@ -30,26 +38,34 @@ const iconAliasMap: Record<string, string> = {
   building: "../../assets/icons/forum.svg",
   forum: "../../assets/icons/forum.svg",
 
-  shield: "../../assets/icons/badge pessoa.svg",
-  "shield-check": "../../assets/icons/badge pessoa.svg",
-  "badge-pessoa": "../../assets/icons/badge pessoa.svg",
-  "badge pessoa": "../../assets/icons/badge pessoa.svg",
+  shield: "../../assets/how-section/sign.svg",
+  "shield-check": "../../assets/how-section/sign.svg",
+  "badge-pessoa": "../../assets/how-section/sign.svg",
+  "badge pessoa": "../../assets/how-section/sign.svg",
 
   document: "../../assets/icons/folha com lapis.svg",
   "folha-com-lapis": "../../assets/icons/folha com lapis.svg",
   "folha com lapis": "../../assets/icons/folha com lapis.svg",
 
   badge: "../../assets/icons/badge.svg",
-  calendar: "../../assets/icons/calendario.svg",
-  calendario: "../../assets/icons/calendario.svg",
+  calendar: "../../assets/how-section/clock.svg",
+  calendario: "../../assets/how-section/clock.svg",
+  clock: "../../assets/how-section/clock.svg",
   group: "../../assets/icons/group.svg",
-  grow: "../../assets/icons/grow.svg",
-  "chart-up": "../../assets/icons/grow.svg",
+  grow: "../../assets/how-section/grafico-oscilante.svg",
+  "chart-up": "../../assets/how-section/grafico-oscilante.svg",
   handshake: "../../assets/icons/handshake.svg",
   person: "../../assets/icons/person.svg",
   user: "../../assets/icons/person.svg",
-  sign: "../../assets/icons/sign.svg",
+  sign: "../../assets/how-section/sign.svg",
   target: "../../assets/icons/target.svg",
+
+  // New icons from how-section
+  chatballon: "../../assets/how-section/chatballon.svg",
+  speech: "../../assets/how-section/chatballon.svg",
+  searchtext: "../../assets/how-section/searchtext.svg",
+  "check-list": "../../assets/how-section/check-list.svg",
+  checklist: "../../assets/how-section/check-list.svg",
 };
 
 const pathKey = iconAliasMap[name] || `../../assets/icons/${name}.svg`;

@@ -1,0 +1,385 @@
+---
+import Icon from "../common/Icon.astro";
+import ProcessStepItem from "../common/ProcessStepItem.astro";
+
+// Real assets imported from src/assets/how-section/
+import sideImg from "../../assets/how-section/side-image.png";
+import handContactImg from "../../assets/how-section/hand on contact.png";
+import lupaImg from "../../assets/how-section/lupa.png";
+import assinandoImg from "../../assets/how-section/assinando.png";
+import mailImg from "../../assets/how-section/mail.png";
+import balancaImg from "../../assets/how-section/balança.png";
+
+const processSteps = [
+  {
+    number: 1,
+    icon: "chatballon",
+    title: "ATENDIMENTO E ESCUTA",
+    description:
+      "Entendemos sua situação com atenção e empatia para identificar suas necessidades e objetivos.",
+    image: handContactImg,
+  },
+  {
+    number: 2,
+    icon: "searchtext",
+    title: "ANÁLISE E ESTRATÉGIA",
+    description:
+      "Realizamos uma análise criteriosa do seu caso e definimos a melhor estratégia jurídica.",
+    image: lupaImg,
+  },
+  {
+    number: 3,
+    icon: "check-list",
+    title: "PLANEJAMENTO E AÇÃO",
+    description:
+      "Elaboramos o plano de ação e iniciamos todas as providências necessárias para o seu caso.",
+    image: assinandoImg,
+  },
+  {
+    number: 4,
+    icon: "group",
+    title: "ACOMPANHAMENTO CONSTANTE",
+    description:
+      "Você recebe informações claras e atualizações sobre cada etapa do processo.",
+    image: mailImg,
+  },
+  {
+    number: 5,
+    icon: "shield",
+    title: "RESULTADOS COM SEGURANÇA",
+    description:
+      "Trabalhamos com foco em resultados, sempre buscando a melhor solução para você.",
+    image: balancaImg,
+  },
+];
+---
+
+<section class="how-we-work-section" id="como-trabalhamos">
+  <div class="section-container">
+    <div class="main-content-row">
+      <!-- Mobile Top Header Group (Text Left + Side Image Right in Mobile) -->
+      <div class="mobile-top-header-group">
+        <!-- Left Header Column -->
+        <div class="header-content">
+          <div class="category-badge">
+            <span class="badge-text">COMO TRABALHAMOS</span>
+            <div class="badge-line"></div>
+          </div>
+
+          <h2 class="main-headline">
+            Um atendimento <span class="gold-serif">humanizado.</span><br />
+            Um processo <span class="dark-serif">estratégico.</span>
+          </h2>
+
+          <p class="subtitle-text">
+            Nosso método de trabalho foi desenvolvido para oferecer segurança,
+            transparência e eficiência em cada etapa do seu caso.
+          </p>
+
+          <div class="commitment-card">
+            <div class="commitment-icon-box">
+              <Icon name="shield" />
+            </div>
+            <div class="commitment-info">
+              <h4 class="commitment-title">Compromisso com você</h4>
+              <p class="commitment-desc">
+                Informação clara, acompanhamento constante e total dedicação
+                para alcançar os melhores resultados.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Side Image (Extends flush to the far right edge of the bar above) -->
+        <div class="mobile-side-image-card">
+          <img
+            src={sideImg.src}
+            alt="Como Trabalhamos GOM Advogados"
+            class="mobile-side-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Right Column: 5 Process Cards Side-by-Side on Desktop, Stacked on Mobile -->
+      <div class="process-steps-container">
+        {
+          processSteps.map((step) => (
+            <ProcessStepItem
+              number={step.number}
+              icon={step.icon}
+              title={step.title}
+              description={step.description}
+              imageSrc={step.image}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base Section Layout */
+  .how-we-work-section {
+    width: 100%;
+    background-color: var(--color-bg-light);
+    padding: 48px 0 28px 0 !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .section-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 0 0 20px !important; /* Zero right padding so image touches right edge */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* DESKTOP LAYOUT (Default >= 900px) */
+  .main-content-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobile-top-header-group {
+    display: contents; /* Unwraps header-content for direct flex row layout in desktop */
+  }
+
+  .header-content {
+    flex: 0 0 280px;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    box-sizing: border-box;
+  }
+
+  .mobile-side-image-card {
+    display: none;
+  }
+
+  .mobile-side-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .process-steps-container {
+    flex: 1 1 0%;
+    min-width: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 8px;
+    padding-right: 20px; /* Cards keep 20px right margin on desktop */
+    box-sizing: border-box;
+  }
+
+  /* Category Badge */
+  .category-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .badge-text {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .badge-line {
+    width: 32px;
+    height: 1.5px;
+    background-color: var(--color-gold);
+  }
+
+  /* Headlines */
+  .main-headline {
+    font-family: var(--font-sans);
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .gold-serif {
+    font-family: var(--font-serif-display);
+    color: var(--color-gold);
+    font-weight: 500;
+  }
+
+  .dark-serif {
+    font-family: var(--font-serif-display);
+    color: var(--color-text-dark);
+    font-weight: 500;
+  }
+
+  .subtitle-text {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* Highlight Commitment Card */
+  .commitment-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--color-card-light);
+    border: 1px solid rgba(200, 162, 97, 0.2);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: auto;
+    min-width: 0;
+  }
+
+  .commitment-icon-box {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    background-color: var(--color-bg-dark);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+  }
+
+  .commitment-icon-box :global(svg) {
+    width: 32px;
+    height: 32px;
+  }
+
+  .commitment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .commitment-title {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin: 0;
+  }
+
+  .commitment-desc {
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    line-height: 1.35;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* -------------------------------------------------------------------
+     MOBILE RESPONSIVE LAYOUT (< 900px)
+     Image touches far right edge (aligned with stats bar above)
+     ------------------------------------------------------------------- */
+  @media (max-width: 899px) {
+    .section-container {
+      padding: 0 0 0 16px !important;
+    }
+
+    .main-content-row {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-top-header-group {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .header-content {
+      flex: 1 1 54% !important;
+      width: 54% !important;
+      min-width: 0 !important;
+      max-width: 54% !important;
+      gap: 10px;
+    }
+
+    /* Mobile Side Image: Extends 100% flush to the right edge */
+    .mobile-side-image-card {
+      display: block !important;
+      flex: 0 0 46% !important;
+      width: 46% !important;
+      min-width: 0 !important;
+      max-width: 46% !important;
+      margin-right: 0 !important;
+      border-radius: 8px 0 0 8px; /* Touches far right edge flush */
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-headline {
+      font-size: 1.25rem;
+    }
+
+    .subtitle-text {
+      font-size: 0.78rem;
+    }
+
+    .commitment-card {
+      padding: 8px;
+      gap: 8px;
+    }
+
+    .commitment-icon-box {
+      width: 32px;
+      height: 32px;
+    }
+
+    .commitment-icon-box :global(svg) {
+      width: 22px;
+      height: 22px;
+    }
+
+    .commitment-title {
+      font-size: 0.76rem;
+    }
+
+    .commitment-desc {
+      font-size: 0.7rem;
+    }
+
+    .process-steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      margin-top: 6px;
+      padding-right: 16px; /* Cards maintain 16px right margin */
+    }
+  }
+</style>

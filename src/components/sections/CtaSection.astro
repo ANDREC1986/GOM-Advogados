@@ -1,0 +1,457 @@
+---
+import Icon from "../common/Icon.astro";
+
+// Single editorial image used as background layer behind the CTA in Desktop
+import notebookImg from "../../assets/how-section/side-image.png";
+
+const whatsappUrl =
+  "https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o.";
+---
+
+<section class="cta-separated-section">
+  <div class="cta-container">
+    <div class="cta-card-inner">
+      <!-- Single Background Image Layer strictly locked to the RIGHT side on Desktop (z-index: 1) -->
+      <div class="cta-bg-image-layer">
+        <img src={notebookImg.src} alt="" class="cta-bg-img" loading="lazy" />
+        <div class="cta-bg-overlay"></div>
+      </div>
+
+      <!-- Div 1 (Left): Text + Mobile WhatsApp Button -->
+      <div class="cta-left-content">
+        <div class="cta-text-block">
+          <h3 class="cta-main-title">
+            Seu caso merece estratégia.<br />
+            <span class="cta-gold-title">Nós estamos prontos para ajudar.</span>
+          </h3>
+          <p class="cta-paragraph">
+            Fale com um de nossos especialistas e dê o primeiro passo para a
+            solução que você precisa.
+          </p>
+        </div>
+
+        <!-- WhatsApp Button for Mobile -->
+        <div class="cta-action-group mobile-cta-group">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="whatsapp-cta-btn"
+          >
+            <Icon name="whatsapp" />
+            <span>FALAR NO WHATSAPP</span>
+          </a>
+          <span class="cta-subtext">Atendimento rápido e humanizado</span>
+        </div>
+      </div>
+
+      <!-- Div 2 (Right): 3 Bullets / Differentials with Icons -->
+      <div class="cta-center-differentials">
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="shield" />
+          </div>
+          <span class="diff-text">Atendimento sigiloso e personalizado</span>
+        </div>
+
+        <div class="diff-divider"></div>
+
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="calendar" />
+          </div>
+          <span class="diff-text">Respostas ágeis e objetivas</span>
+        </div>
+
+        <div class="diff-divider"></div>
+
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="grow" />
+          </div>
+          <span class="diff-text">Foco em resultados efetivos</span>
+        </div>
+      </div>
+
+      <!-- Div 3: Desktop WhatsApp Button -->
+      <div class="cta-right-action">
+        <div class="cta-action-group desktop-cta-group">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="whatsapp-cta-btn"
+          >
+            <Icon name="whatsapp" />
+            <span>FALAR NO WHATSAPP</span>
+          </a>
+          <span class="cta-subtext">Atendimento rápido e humanizado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base Section Layout */
+  .cta-separated-section {
+    width: 100%;
+    background-color: var(--color-bg-light);
+    padding: 24px 0 56px 0;
+    box-sizing: border-box;
+  }
+
+  .cta-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  /* Main Card Inner Container */
+  .cta-card-inner {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg-dark);
+    border: 1px solid rgba(200, 162, 97, 0.25);
+    border-radius: 16px;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 32px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Single Background Image Layer anchored to the RIGHT side behind content using z-index */
+  .cta-bg-image-layer {
+    position: absolute;
+    top: 0;
+    right: 0 !important;
+    left: auto !important;
+    width: 45%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .cta-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    opacity: 0.35;
+    display: block;
+  }
+
+  .cta-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #0a0b0d 0%,
+      rgba(10, 11, 13, 0.5) 50%,
+      rgba(10, 11, 13, 0.1) 100%
+    );
+  }
+
+  /* All Content Divs elevated with z-index: 2 */
+  .cta-left-content,
+  .cta-text-block,
+  .cta-action-group,
+  .cta-center-differentials,
+  .cta-right-action {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* -------------------------------------------------------------------
+     DESKTOP LAYOUT (Default >= 951px):
+     Column 1 (Left ~33%): Text Block (.cta-text-block)
+     Column 2 (Center ~34%): 3 Differentials (.cta-center-differentials)
+     Column 3 (Right ~33%): WhatsApp CTA Button (.cta-action-group)
+     ------------------------------------------------------------------- */
+  .cta-left-content {
+    display: contents;
+  }
+
+  .cta-text-block {
+    order: 1;
+    flex: 1 1 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .cta-main-title {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-text-white);
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .cta-gold-title {
+    font-family: var(--font-serif-display);
+    color: var(--color-gold);
+    font-weight: 500;
+  }
+
+  .cta-paragraph {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  .mobile-cta-group {
+    display: none !important;
+  }
+
+  /* Div 2: Center Differentials with Icons (~34% width on Desktop) */
+  .cta-center-differentials {
+    order: 2;
+    flex: 1 1 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding-left: 28px;
+    border-left: 1px solid rgba(200, 162, 97, 0.25);
+    min-width: 0;
+  }
+
+  .diff-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .diff-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diff-icon :global(svg) {
+    width: 28px;
+    height: 28px;
+  }
+
+  .diff-text {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-text-white);
+    line-height: 1.35;
+  }
+
+  .diff-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(200, 162, 97, 0.2);
+  }
+
+  /* Div 3: Separated WhatsApp Button Div (Pushed down in Desktop) */
+  .cta-right-action {
+    order: 3;
+    flex: 1 1 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: stretch;
+    min-width: 0;
+  }
+
+  .desktop-cta-group {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+    transform: translateY(12px); /* Pushes Desktop button down further towards card bottom */
+  }
+
+  .whatsapp-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 14px rgba(200, 162, 97, 0.2);
+  }
+
+  .whatsapp-cta-btn:hover {
+    background-color: #d8b371;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(200, 162, 97, 0.4);
+  }
+
+  .whatsapp-cta-btn :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cta-subtext {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+  }
+
+  /* -------------------------------------------------------------------
+     MOBILE / TABLET RESPONSIVE LAYOUT (< 950px)
+     Side-by-Side: Left (Text + Button ~54%) | Right (Bullets/Icons ~46%)
+     ------------------------------------------------------------------- */
+  @media (max-width: 950px) {
+    .cta-card-inner {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: stretch !important;
+      justify-content: space-between !important;
+      padding: 24px 14px !important;
+      gap: 10px !important;
+    }
+
+    /* Background image hidden on mobile/tablet */
+    .cta-bg-image-layer,
+    .cta-bg-img,
+    .cta-bg-overlay {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    /* Left Side: Text + WhatsApp Button (~54% width) */
+    .cta-left-content {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      order: 1 !important;
+      flex: 0 0 calc(54% - 5px) !important;
+      width: calc(54% - 5px) !important;
+      min-width: 0 !important;
+      gap: 10px !important;
+    }
+
+    /* Text block MUST be order 1 (on top) inside left column */
+    .cta-text-block {
+      order: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex: initial !important;
+      gap: 6px !important;
+    }
+
+    .cta-main-title {
+      font-size: 1.05rem !important;
+    }
+
+    .cta-paragraph {
+      font-size: 0.76rem !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Mobile CTA group MUST be order 2 (below text) inside left column */
+    .mobile-cta-group {
+      order: 2 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 4px !important;
+      width: 100% !important;
+      margin-top: 4px !important;
+    }
+
+    .whatsapp-cta-btn {
+      padding: 11px 8px !important;
+      font-size: 0.72rem !important;
+      gap: 5px !important;
+    }
+
+    .whatsapp-cta-btn :global(svg) {
+      width: 16px !important;
+      height: 16px !important;
+    }
+
+    .cta-subtext {
+      font-size: 0.68rem !important;
+    }
+
+    /* Right Side: Bullets with Icons (~46% width) */
+    .cta-center-differentials {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      order: 2 !important;
+      flex: 0 0 calc(46% - 5px) !important;
+      width: calc(46% - 5px) !important;
+      min-width: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      gap: 8px !important;
+    }
+
+    .diff-item {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .diff-icon {
+      width: 43px !important;
+      height: 43px !important;
+      min-width: 43px !important;
+      flex: 0 0 43px !important;
+    }
+
+    .diff-icon :global(svg) {
+      width: 38px !important;
+      height: 38px !important;
+    }
+
+    .diff-text {
+      font-size: 0.70rem !important;
+      line-height: 1.2 !important;
+    }
+
+    .diff-divider {
+      height: 1px !important;
+      background-color: rgba(200, 162, 97, 0.18) !important;
+    }
+
+    .cta-right-action {
+      display: none !important;
+    }
+  }
+</style>
