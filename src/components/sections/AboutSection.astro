@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import ValueItem from "../common/ValueItem.astro";
+import Title from "../common/Title.astro";
 import recepcaoImg from "../../assets/recepcao.png";
 
 const values = [
@@ -61,21 +62,12 @@ const stats = [
   <!-- Top Split Area -->
   <div class="about-top">
     <div class="about-top-container">
-      <!-- Left Column Content -->
       <div class="about-content">
-        <div class="badge-wrapper">
-          <span class="badge-text">QUEM SOMOS</span>
-          <div class="badge-line"></div>
-        </div>
-
-        <h2 class="about-title">
-          Excelência jurídica <br />
-          <span class="title-gold">com propósito.</span>
-        </h2>
-
-        <div class="badge-wrapper">
-          <div class="badge-line"></div>
-        </div>
+        <Title
+          badge="QUEM SOMOS"
+          headline="Excelência jurídica <br /><span class='gold'>com propósito.</span>"
+          padding="0 20px"
+        />
 
         <p class="about-paragraph">
           A GOM Advogados Associados nasceu com o compromisso de oferecer
@@ -183,11 +175,6 @@ const stats = [
     padding: 24px 0 0 0;
   }
 
-  .about-content > :not(.values-box) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   .badge-wrapper {
     display: flex;
     flex-direction: column;
@@ -235,7 +222,7 @@ const stats = [
     font-family: var(--font-sans);
     font-size: 0.88rem;
     font-weight: 500;
-    padding: 0.5rem 0 0.5 0;
+    padding: 0 20px;
     line-height: 1.58;
     color: #475569;
     margin-bottom: 10px;
@@ -277,11 +264,6 @@ const stats = [
     .about-content {
       order: 1;
       padding: 0;
-    }
-
-    .about-content > :not(.values-box) {
-      padding-left: 0;
-      padding-right: 0;
     }
 
     .about-visual {

@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 interface Props {
   number: number | string;
@@ -10,10 +10,17 @@ interface Props {
   imageAlt?: string;
 }
 
-const { number, icon, title, description, imageSrc, imageAlt = title } = Astro.props;
+const {
+  number,
+  icon,
+  title,
+  description,
+  imageSrc,
+  imageAlt = title,
+} = Astro.props;
 
 // Handle both static string paths and imported ImageMetadata objects
-const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
+const imgSrc = typeof imageSrc === "string" ? imageSrc : imageSrc.src;
 ---
 
 <div class="process-step-item">
@@ -37,6 +44,7 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
       <!-- Text Content inside card -->
       <div class="step-content">
         <h3 class="step-title">{title}</h3>
+        <div class="yellow-line-desktop"></div>
         <p class="step-description">{description}</p>
       </div>
     </div>
@@ -123,7 +131,9 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
     gap: 12px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
     box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .process-step-item:hover .step-card-box {
@@ -140,7 +150,7 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0.5rem auto;
   }
 
   .step-icon-wrapper :global(svg) {
@@ -160,9 +170,10 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
 
   .step-title {
     font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: 0.04em;
+    max-width: min-content;
     text-transform: uppercase;
     color: var(--color-text-dark);
     text-align: center;
@@ -172,13 +183,18 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
 
   .step-description {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 1rem;
     line-height: 1.35;
-    color: var(--color-text-muted);
+    color: var(--color-text-dark);
     text-align: center;
     margin: 0;
   }
-
+  .yellow-line-desktop {
+    background-color: var(--color-gold);
+    height: 1px;
+    width: 60px;
+    margin: 0.5rem 0;
+  }
   /* --------------------------------------------------
      MOBILE VIEW (< 900px): Horizontal Row Card
      -------------------------------------------------- */
@@ -188,12 +204,15 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
       align-items: center;
       height: auto;
     }
+    .yellow-line-desktop {
+      display: none;
+    }
 
     .step-image-wrapper {
-      width: 64px;
-      height: 64px;
-      min-width: 64px;
-      max-width: 64px;
+      width: 74px;
+      height: 74px;
+      min-width: 74px;
+      max-width: 74px;
       flex: 0 0 64px;
       border-radius: 8px;
     }
@@ -251,12 +270,12 @@ const imgSrc = typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
     }
 
     .step-title {
-      font-size: 0.78rem;
+      font-size: 0.88rem;
       text-align: left;
     }
 
     .step-description {
-      font-size: 0.76rem;
+      font-size: 0.86rem;
       text-align: left;
     }
   }

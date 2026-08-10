@@ -1,8 +1,8 @@
 :root {
   --color-bg-dark: #0a0b0d;
   --color-bg-dark-card: #121417;
-  --color-bg-light: #fdfbf7;
-  --color-card-light: #f7f4ee;
+  --color-card-light: #f8f7f4;
+  --color-bg-light: #f7f4ee;
   --color-gold: #C79A47;
   --color-gold-hover: #C79A47;
   --color-gold-light: rgba(200, 162, 97, 0.12);
@@ -56,4 +56,14 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* Global paragraph typography class */
+.about-paragraph {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.58;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
 }

@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 interface Props {
   icon: "calendar" | "user" | "handshake" | "chart-up";
@@ -20,7 +20,7 @@ const { icon, title, subtitle, description } = Astro.props;
   <!-- Mobile Vertical Inner Line 1 (Between Icon and Main) -->
   <div class="inner-divider mobile-only"></div>
 
-  <!-- Left Value Column (Title + Subtitle in Gold Serif Display Number Style with same font size & no wrapping) -->
+  <!-- Left Value Column (Title + Subtitle) -->
   <div class="stat-main">
     <div class="stat-text-gold">{title}</div>
     <div class="stat-text-gold">{subtitle}</div>
@@ -57,7 +57,7 @@ const { icon, title, subtitle, description } = Astro.props;
 
   .stat-icon {
     color: var(--color-gold);
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     width: 28px;
@@ -68,6 +68,15 @@ const { icon, title, subtitle, description } = Astro.props;
   .stat-icon :global(svg) {
     width: 28px;
     height: 28px;
+    display: block !important;
+    color: var(--color-gold) !important;
+  }
+
+  .stat-icon :global(svg path),
+  .stat-icon :global(svg circle),
+  .stat-icon :global(svg rect),
+  .stat-icon :global(svg line) {
+    stroke: var(--color-gold) !important;
   }
 
   .stat-main {
@@ -126,21 +135,25 @@ const { icon, title, subtitle, description } = Astro.props;
       align-items: center;
       text-align: center;
       padding: 16px 8px;
-      gap: 6px;
+      gap: 8px;
       flex: 1;
       width: auto;
     }
 
     .stat-icon {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
       width: 32px;
       height: 32px;
-      flex: initial;
+      min-width: 32px;
+      min-height: 32px;
+      flex: 0 0 32px;
       margin-bottom: 4px;
     }
 
-    .stat-icon :global(svg) {
-      width: 32px;
-      height: 32px;
+    .stat-icon {
+      display: none !important;
     }
 
     .stat-main {

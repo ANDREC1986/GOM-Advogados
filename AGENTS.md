@@ -50,3 +50,6 @@ Consult these guides before working on related tasks:
   - Cards de valor mantêm sua cor de fundo original (`var(--color-card-light)`), com elevação discreta (`translateY(-3px)`) e sombra suave (`box-shadow: 0 8px 20px rgba(0,0,0,0.08)`), sem brilho dourado.
 - **Links de CTA**:
   - Botões "AGENDAR REUNIÃO" direcionam para o WhatsApp oficial (`554730457491`) com texto pré-preenchido de agendamento (`https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o.`).
+- **Padrão de Títulos e Parágrafos de Seção**:
+  - Todas as seções utilizam o componente comum `Title.astro` (`src/components/common/Title.astro`) para a vinheta (`badge`), linha amarela e headline (`headline` com destaque via `<span class="gold">...</span>` e prop `padding`).
+  - Todos os parágrafos descritivos principais das seções utilizam a classe global `.about-paragraph` (definida em `src/styles/style.css`).

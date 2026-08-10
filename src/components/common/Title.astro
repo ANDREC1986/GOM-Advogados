@@ -1,0 +1,117 @@
+---
+interface Props {
+  badge: string;
+  headline?: string;
+  title?: string;
+  padding?: string;
+  class?: string;
+}
+
+const {
+  badge,
+  headline,
+  title,
+  padding,
+  class: className = "",
+} = Astro.props;
+
+const headlineText = headline || title || "";
+const hasSlot = Astro.slots.has("default");
+---
+
+<div
+  class:list={["title-component", className]}
+  style={padding ? { padding } : undefined}
+>
+  <!-- Badge Text + Linha Amarela Abaixo -->
+  <div class="badge-wrapper">
+    <span class="badge-text">{badge}</span>
+    <div class="badge-line"></div>
+  </div>
+
+  <!-- Headline principal (string única com suporte a <span class="gold">) -->
+  <h2 class="main-title">
+    {
+      hasSlot ? (
+        <slot />
+      ) : (
+        <Fragment set:html={headlineText} />
+      )
+    }
+  </h2>
+
+  <!-- Linha Amarela Abaixo da Headline -->
+  <div class="badge-wrapper">
+    <div class="badge-line"></div>
+  </div>
+</div>
+
+<style>
+  .title-component {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .badge-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .badge-text {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .badge-line {
+    width: 32px;
+    height: 1px;
+    margin: 0.25rem 0;
+    background-color: var(--color-gold);
+  }
+
+  .main-title {
+    font-family: var(--font-serif-display);
+    font-size: 2.6rem;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--color-text-dark);
+    letter-spacing: -0.01em;
+    margin: 8px 0;
+  }
+
+  /* Target dynamically inserted <span class="gold"> elements in set:html */
+  .main-title :global(span),
+  .main-title :global(.gold),
+  .main-title :global(span.gold),
+  .main-title :global(.title-gold),
+  .main-title :global(.gold-serif) {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    color: var(--color-gold) !important;
+  }
+
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Global utility class for gold text highlighting inside Title component */
+  .gold,
+  span.gold {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    color: var(--color-gold) !important;
+  }
+</style>

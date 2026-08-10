@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 interface Props {
   icon: "calendar" | "user" | "handshake" | "chart-up";
@@ -64,7 +64,7 @@ const { icon, number, label, description } = Astro.props;
 
   .stat-icon {
     color: var(--color-gold);
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     width: 28px;
@@ -75,6 +75,15 @@ const { icon, number, label, description } = Astro.props;
   .stat-icon :global(svg) {
     width: 28px;
     height: 28px;
+    display: block !important;
+    color: var(--color-gold) !important;
+  }
+
+  .stat-icon :global(svg path),
+  .stat-icon :global(svg circle),
+  .stat-icon :global(svg rect),
+  .stat-icon :global(svg line) {
+    stroke: var(--color-gold) !important;
   }
 
   .stat-main {
@@ -141,21 +150,20 @@ const { icon, number, label, description } = Astro.props;
       align-items: center;
       text-align: center;
       padding: 16px 8px;
-      gap: 6px;
+      gap: 8px;
       flex: 1;
       width: auto;
     }
 
     .stat-icon {
-      width: 32px;
-      height: 32px;
-      flex: initial;
-      margin-bottom: 4px;
+      display: none !important;
     }
 
     .stat-icon :global(svg) {
-      width: 32px;
-      height: 32px;
+      width: 32px !important;
+      height: 32px !important;
+      display: block !important;
+      color: var(--color-gold) !important;
     }
 
     .stat-main {

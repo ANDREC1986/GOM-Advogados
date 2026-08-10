@@ -1,6 +1,7 @@
 ---
 import Icon from "../common/Icon.astro";
 import ProcessStepItem from "../common/ProcessStepItem.astro";
+import Title from "../common/Title.astro";
 
 // Real assets imported from src/assets/how-section/
 import sideImg from "../../assets/how-section/side-image.png";
@@ -61,17 +62,12 @@ const processSteps = [
       <div class="mobile-top-header-group">
         <!-- Left Header Column -->
         <div class="header-content">
-          <div class="category-badge">
-            <span class="badge-text">COMO TRABALHAMOS</span>
-            <div class="badge-line"></div>
-          </div>
+          <Title
+            badge="COMO TRABALHAMOS"
+            headline="Um atendimento <span class='gold'>humanizado.</span><br />Um processo estratégico."
+          />
 
-          <h2 class="main-headline">
-            Um atendimento <span class="gold-serif">humanizado.</span><br />
-            Um processo <span class="dark-serif">estratégico.</span>
-          </h2>
-
-          <p class="subtitle-text">
+          <p class="about-paragraph">
             Nosso método de trabalho foi desenvolvido para oferecer segurança,
             transparência e eficiência em cada etapa do seu caso.
           </p>
@@ -237,7 +233,7 @@ const processSteps = [
     font-family: var(--font-sans);
     font-size: 0.85rem;
     line-height: 1.45;
-    color: var(--color-text-muted);
+    color: var(--color-text-dark);
     margin: 0;
   }
 
@@ -291,7 +287,7 @@ const processSteps = [
     font-family: var(--font-sans);
     font-size: 0.74rem;
     line-height: 1.35;
-    color: var(--color-text-muted);
+    color: var(--color-text-dark);
     margin: 0;
   }
 
@@ -356,21 +352,21 @@ const processSteps = [
     }
 
     .commitment-icon-box {
+      width: 52px;
+      height: 52px;
+    }
+
+    .commitment-icon-box :global(svg) {
       width: 32px;
       height: 32px;
     }
 
-    .commitment-icon-box :global(svg) {
-      width: 22px;
-      height: 22px;
-    }
-
     .commitment-title {
-      font-size: 0.76rem;
+      font-size: 0.86rem;
     }
 
     .commitment-desc {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
 
     .process-steps-container {
