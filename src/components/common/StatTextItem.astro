@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   icon: "calendar" | "user" | "handshake" | "chart-up";
   title: string;
@@ -12,96 +14,7 @@ const { icon, title, subtitle, description } = Astro.props;
 <div class="stat-item">
   <!-- Icon -->
   <div class="stat-icon">
-    {
-      icon === "calendar" && (
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor">
-          <g transform="matrix(1.062284,0,0,0.996503,-434.259024,-439.96648)">
-            <rect x="412.401" y="449.272" width="34.214" height="33.858" style="fill:none;stroke:currentColor;stroke-width:2.59px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-441.53736)">
-            <path d="M411.401,457.559L447.745,457.559" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-441.53736)">
-            <path d="M439.275,444.063L439.275,453.297" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-427.573156,-441.53736)">
-            <path d="M439.275,444.063L439.275,453.297" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-441.53736)">
-            <path d="M420.462,466.455L420.523,466.455" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-441.53736)">
-            <path d="M429.554,466.637L429.615,466.637" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-441.53736)">
-            <path d="M438.222,466.697L438.222,466.637" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-433.53736)">
-            <path d="M420.462,466.455L420.523,466.455" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-433.53736)">
-            <path d="M429.554,466.637L429.615,466.637" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-407.573156,-433.53736)">
-            <path d="M438.222,466.697L438.222,466.637" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-        </svg>
-      )
-    }
-
-    {
-      icon === "user" && (
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor">
-          <g transform="matrix(0.735792,0,0,0.735792,-297.082388,-388.260398)">
-            <circle cx="433.178" cy="545.541" r="12.655" style="fill:none;stroke:currentColor;stroke-width:3.62px;"/>
-          </g>
-          <g transform="matrix(0.735792,0,0,0.735792,-294.139221,-387.524606)">
-            <path d="M415.265,558.398C415.265,558.398 407.096,559.917 407.807,577.695C407.807,577.695 411.95,581.149 427.696,581.268" style="fill:none;stroke:currentColor;stroke-width:3.62px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(-0.873002,0,0,0.735792,394.088526,-387.524606)">
-            <path d="M415.265,558.398C415.265,558.398 407.096,559.917 407.807,577.695C407.807,577.695 411.95,581.149 427.696,581.268" style="fill:none;stroke:currentColor;stroke-width:3.3px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-        </svg>
-      )
-    }
-
-    {
-      icon === "handshake" && (
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor">
-          <g transform="matrix(0.838557,0,0,0.838557,-337.915855,-524.719319)">
-            <path d="M445.988,654.255L447.405,655.902C448.241,656.872 448.131,658.338 447.161,659.174C446.19,660.009 444.724,659.9 443.888,658.929L441.201,655.808C441.07,655.656 440.962,655.491 440.877,655.319L439.992,656.182C440.236,656.313 440.46,656.49 440.651,656.712L443.338,659.834C444.174,660.804 444.065,662.271 443.094,663.106C442.124,663.942 440.657,663.832 439.822,662.862L437.134,659.74C437.009,659.595 436.906,659.439 436.823,659.276L435.95,660.128C436.184,660.258 436.4,660.43 436.584,660.644L439.272,663.766C440.107,664.736 439.998,666.203 439.027,667.038C438.057,667.874 436.591,667.764 435.755,666.794L433.067,663.672C432.949,663.535 432.85,663.387 432.769,663.233L431.908,664.074C432.132,664.202 432.339,664.37 432.518,664.577L435.205,667.698C436.041,668.669 435.931,670.135 434.961,670.97C433.99,671.806 432.524,671.697 431.688,670.726L429.001,667.605C428.99,667.592 428.895,667.521 428.723,667.396C429.173,666.562 429.08,665.499 428.413,664.751C427.562,663.794 426.094,663.71 425.137,664.561L425.006,664.678L424.183,664.063L424.224,664.027C425.18,663.175 425.265,661.707 443.094,663.106" style="fill:none;stroke:currentColor;stroke-width:3.18px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(0.838557,0,0,0.838557,-338.068339,-525.006169)">
-            <path d="M445.882,654.968L432.837,640.656C432.837,640.656 426.049,648.414 422.291,645.202C418.532,641.989 428.655,635.564 428.655,635.564C428.655,635.564 437.323,628.23 443.566,632.533C449.809,636.837 451.749,639.746 451.749,639.746C451.749,639.746 455.507,647.167 450.294,651.185C446.536,654.082 445.928,654.795 445.882,654.968ZM445.882,654.968L445.93,655.021C445.93,655.021 445.864,655.035 445.882,654.968Z" style="fill:none;stroke:currentColor;stroke-width:3.18px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-        </svg>
-      )
-    }
-
-    {
-      icon === "chart-up" && (
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor">
-          <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-            <path d="M409.372,754.079L447.61,754.079" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-            <rect x="412.1" y="743.951" width="5.431" height="10.129" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1.520642,-393.490882,-1105.486085)">
-            <rect x="412.1" y="743.951" width="5.431" height="10.129" style="fill:none;stroke:currentColor;stroke-width:2.07px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,2.328536,-379.490882,-1714.701867)">
-            <rect x="412.1" y="743.951" width="5.431" height="10.129" style="fill:none;stroke:currentColor;stroke-width:1.49px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-            <path d="M411.335,737.757L443.4,717.088L434.492,715.681" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-          <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-            <path d="M441.816,725.634L443.4,717.088" style="fill:none;stroke:currentColor;stroke-width:2.67px;stroke-linecap:round;stroke-linejoin:round;"/>
-          </g>
-        </svg>
-      )
-    }
+    <Icon name={icon} />
   </div>
 
   <!-- Mobile Vertical Inner Line 1 (Between Icon and Main) -->
@@ -148,10 +61,11 @@ const { icon, title, subtitle, description } = Astro.props;
     align-items: center;
     justify-content: center;
     width: 28px;
+    height: 28px;
     flex: 0 0 28px;
   }
 
-  .stat-icon svg {
+  .stat-icon :global(svg) {
     width: 28px;
     height: 28px;
   }
@@ -224,7 +138,7 @@ const { icon, title, subtitle, description } = Astro.props;
       margin-bottom: 4px;
     }
 
-    .stat-icon svg {
+    .stat-icon :global(svg) {
       width: 32px;
       height: 32px;
     }

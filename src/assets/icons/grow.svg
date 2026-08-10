@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-        <path d="M409.372,754.079L447.61,754.079" style="fill:none;stroke:black;stroke-width:2.67px;"/>
-    </g>
-    <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-        <rect x="412.1" y="743.951" width="5.431" height="10.129" style="fill:none;stroke:black;stroke-width:2.67px;"/>
-    </g>
-    <g transform="matrix(1,0,0,1.520642,-393.490882,-1105.486085)">
-        <rect x="412.1" y="743.951" width="5.431" height="10.129" style="fill:none;stroke:black;stroke-width:2.07px;"/>
-    </g>
-    <g transform="matrix(1,0,0,2.328536,-379.490882,-1714.701867)">
-        <rect x="412.1" y="743.951" width="5.431" height="10.129" style="fill:none;stroke:black;stroke-width:1.49px;"/>
-    </g>
-    <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-        <path d="M411.335,737.757L443.4,717.088L434.492,715.681" style="fill:none;stroke:black;stroke-width:2.67px;"/>
-    </g>
-    <g transform="matrix(1,0,0,1,-406.490882,-712.880359)">
-        <path d="M441.816,725.634L443.4,717.088" style="fill:none;stroke:black;stroke-width:2.67px;"/>
-    </g>
+<svg width="100%" height="100%" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <!-- Base Horizontal Axis Line -->
+    <path d="M 4 40 L 40 40" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    
+    <!-- Bar 1 (Left) -->
+    <rect x="7" y="32" width="6" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    
+    <!-- Bar 2 (Center) -->
+    <rect x="19" y="26" width="6" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    
+    <!-- Bar 3 (Right) -->
+    <rect x="31" y="20" width="6" height="20" rx="1" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    
+    <!-- Upward Trend Line (Afastada com amplo respiro sobre as barras) -->
+    <path d="M 4 20 L 38 4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    
+    <!-- Arrow Head -->
+    <path d="M 29 4 L 38 4 L 38 13" fill="none" stroke="currentColor" stroke-width="2.5"/>
 </svg>
