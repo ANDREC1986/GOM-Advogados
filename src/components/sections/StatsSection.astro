@@ -1,0 +1,107 @@
+---
+import StatItem from '../common/StatItem.astro';
+import StatTextItem from '../common/StatTextItem.astro';
+
+const stats = [
+  {
+    icon: 'calendar' as const,
+    number: '+10',
+    label: 'ANOS DE ATUAÇÃO',
+    description: 'Experiência sólida e reconhecimento no mercado.'
+  },
+  {
+    icon: 'user' as const,
+    number: '100%',
+    label: 'ATENDIMENTO PERSONALIZADO',
+    description: 'Soluções jurídicas desenvolvidas para cada clientes.'
+  },
+  {
+    icon: 'handshake' as const,
+    number: '500+',
+    label: 'CLIENTES ATENDIDOS',
+    description: 'Histórias de confiança que se transformam em parcerias.'
+  },
+  {
+    icon: 'chart-up' as const,
+    number: 'RESULTADOS',
+    label: 'QUE GERAM VALOR',
+    description: 'Atuação estratégica que protege, previne e gera segurança.'
+  }
+];
+---
+
+<section class="stats-bar">
+  <div class="stats-container">
+    <StatItem 
+      icon={stats[0].icon}
+      number={stats[0].number} 
+      label={stats[0].label} 
+      description={stats[0].description} 
+    />
+    <div class="stat-divider"></div>
+    <StatItem 
+      icon={stats[1].icon}
+      number={stats[1].number} 
+      label={stats[1].label} 
+      description={stats[1].description} 
+    />
+    <div class="stat-divider"></div>
+    <StatItem 
+      icon={stats[2].icon}
+      number={stats[2].number} 
+      label={stats[2].label} 
+      description={stats[2].description} 
+    />
+    <div class="stat-divider"></div>
+    <StatTextItem 
+      icon={stats[3].icon}
+      title={stats[3].number} 
+      subtitle={stats[3].label} 
+      description={stats[3].description} 
+    />
+  </div>
+</section>
+
+<style>
+  .stats-bar {
+    width: 100%;
+    background-color: var(--color-bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0;
+  }
+
+  .stats-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .stat-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(200, 162, 97, 0.25);
+  }
+
+  @media (min-width: 768px) {
+    .stats-bar {
+      padding: 24px 0;
+    }
+
+    .stats-container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+  }
+</style>

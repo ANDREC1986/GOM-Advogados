@@ -1,57 +1,59 @@
 ---
-import { Image } from 'astro:assets';
-import ValueItem from '../common/ValueItem.astro';
-import StatItem from '../common/StatItem.astro';
-import recepcaoImg from '../../assets/recepcao.png';
+import { Image } from "astro:assets";
+import ValueItem from "../common/ValueItem.astro";
+import recepcaoImg from "../../assets/recepcao.png";
 
 const values = [
   {
-    icon: 'shield-check' as const,
-    title: 'ÉTICA',
-    description: 'Agimos com integridade, transparência e respeito em todas as relações.'
+    icon: "shield-check" as const,
+    title: "ÉTICA",
+    description:
+      "Agimos com integridade, transparência e respeito em todas as relações.",
   },
   {
-    icon: 'people' as const,
-    title: 'COMPROMISSO',
-    description: 'Dedicação total aos objetivos e resultados dos nossos clientes.'
+    icon: "people" as const,
+    title: "COMPROMISSO",
+    description:
+      "Dedicação total aos objetivos e resultados dos nossos clientes.",
   },
   {
-    icon: 'target' as const,
-    title: 'ESTRATÉGIA',
-    description: 'Soluções jurídicas inteligentes, alinhadas a cada necessidade.'
+    icon: "target" as const,
+    title: "ESTRATÉGIA",
+    description:
+      "Soluções jurídicas inteligentes, alinhadas a cada necessidade.",
   },
   {
-    icon: 'award' as const,
-    title: 'EXCELÊNCIA',
-    description: 'Padrões elevados de atuação e constante busca por evolução.'
-  }
+    icon: "award" as const,
+    title: "EXCELÊNCIA",
+    description: "Padrões elevados de atuação e constante busca por evolução.",
+  },
 ];
 
 const stats = [
   {
-    icon: 'calendar' as const,
-    number: '+10',
-    label: 'ANOS DE ATUAÇÃO',
-    description: 'Experiência sólida e reconhecimento no mercado.'
+    icon: "calendar" as const,
+    number: "+10",
+    label: "ANOS DE ATUAÇÃO",
+    description: "Experiência sólida e reconhecimento no mercado.",
   },
   {
-    icon: 'user' as const,
-    number: '100%',
-    label: 'ATENDIMENTO PERSONALIZADO',
-    description: 'Soluções jurídicas desenvolvidas para cada clientes.'
+    icon: "user" as const,
+    number: "100%",
+    label: "ATENDIMENTO PERSONALIZADO",
+    description: "Soluções jurídicas desenvolvidas para cada clientes.",
   },
   {
-    icon: 'handshake' as const,
-    number: '500+',
-    label: 'CLIENTES ATENDIDOS',
-    description: 'Histórias de confiança que se transformam em parcerias.'
+    icon: "handshake" as const,
+    number: "500+",
+    label: "CLIENTES ATENDIDOS",
+    description: "Histórias de confiança que se transformam em parcerias.",
   },
   {
-    icon: 'chart-up' as const,
-    number: 'RESULTADOS',
-    label: 'QUE GERAM VALOR',
-    description: 'Atuação estratégica que protege, previne e gera segurança.'
-  }
+    icon: "chart-up" as const,
+    number: "RESULTADOS",
+    label: "QUE GERAM VALOR",
+    description: "Atuação estratégica que protege, previne e gera segurança.",
+  },
 ];
 ---
 
@@ -62,8 +64,8 @@ const stats = [
       <!-- Left Column Content -->
       <div class="about-content">
         <div class="badge-wrapper">
-          <div class="badge-line"></div>
           <span class="badge-text">QUEM SOMOS</span>
+          <div class="badge-line"></div>
         </div>
 
         <h2 class="about-title">
@@ -71,55 +73,58 @@ const stats = [
           <span class="title-gold">com propósito.</span>
         </h2>
 
-        <div class="title-divider"></div>
+        <div class="badge-wrapper">
+          <div class="badge-line"></div>
+        </div>
 
         <p class="about-paragraph">
-          A GOM Advogados Associados nasceu com o compromisso de oferecer soluções jurídicas estratégicas, personalizadas e eficientes.
+          A GOM Advogados Associados nasceu com o compromisso de oferecer
+          soluções jurídicas estratégicas, personalizadas e eficientes.
         </p>
 
         <p class="about-paragraph">
-          Atuamos de forma consultiva e resolutiva, prevenindo riscos e construindo segurança para pessoas e empresas.
+          Atuamos de forma consultiva e resolutiva, prevenindo riscos e
+          construindo segurança para pessoas e empresas.
         </p>
 
         <!-- 4 Value Pillars Box -->
         <div class="values-box">
-          <ValueItem icon={values[0].icon} title={values[0].title} description={values[0].description} />
+          <ValueItem
+            icon={values[0].icon}
+            title={values[0].title}
+            description={values[0].description}
+          />
           <div class="value-divider"></div>
-          <ValueItem icon={values[1].icon} title={values[1].title} description={values[1].description} />
+          <ValueItem
+            icon={values[1].icon}
+            title={values[1].title}
+            description={values[1].description}
+          />
           <div class="value-divider"></div>
-          <ValueItem icon={values[2].icon} title={values[2].title} description={values[2].description} />
+          <ValueItem
+            icon={values[2].icon}
+            title={values[2].title}
+            description={values[2].description}
+          />
           <div class="value-divider"></div>
-          <ValueItem icon={values[3].icon} title={values[3].title} description={values[3].description} />
+          <ValueItem
+            icon={values[3].icon}
+            title={values[3].title}
+            description={values[3].description}
+          />
         </div>
       </div>
 
       <!-- Right Reception Image -->
       <div class="about-visual">
-        <Image 
-          src={recepcaoImg} 
-          alt="Recepção GOM Advogados Associados" 
+        <Image
+          src={recepcaoImg}
+          alt="Recepção GOM Advogados Associados"
           widths={[400, 600, 800, 1200]}
           sizes="(min-width: 768px) 560px, 100vw"
-          class="reception-image" 
+          class="reception-image"
         />
       </div>
-    </div>
-  </div>
-
-  <!-- Bottom Dark Stats Bar -->
-  <div class="stats-bar">
-    <div class="stats-container">
-      {stats.map((s, idx) => (
-        <>
-          {idx > 0 && <div class="stat-divider" />}
-          <StatItem 
-            icon={s.icon}
-            number={s.number} 
-            label={s.label} 
-            description={s.description} 
-          />
-        </>
-      ))}
     </div>
   </div>
 </section>
@@ -144,14 +149,14 @@ const stats = [
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 0 0 32px 0;
+    padding: 0;
   }
 
   /* Image Column First on Mobile */
   .about-visual {
     order: 1;
     width: 100%;
-    height: 260px;
+    height: auto;
     min-height: 260px;
     position: relative;
     border-radius: 0;
@@ -192,7 +197,8 @@ const stats = [
 
   .badge-line {
     width: 32px;
-    height: 1.5px;
+    height: 1px;
+    margin: 0.25rem 0;
     background-color: var(--color-gold);
   }
 
@@ -228,6 +234,8 @@ const stats = [
   .about-paragraph {
     font-family: var(--font-sans);
     font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.5rem 0 0.5 0;
     line-height: 1.58;
     color: #475569;
     margin-bottom: 10px;
@@ -255,30 +263,6 @@ const stats = [
     flex-shrink: 0;
     background-color: var(--color-gold);
     margin: 6px 0;
-  }
-
-  /* Bottom Stats Bar */
-  .stats-bar {
-    width: 100%;
-    background-color: var(--color-bg-dark);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 0;
-  }
-
-  .stats-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .stat-divider {
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: rgba(200, 162, 97, 0.25);
   }
 
   /* Tablet & Desktop Enhancements (min-width: 768px) */
@@ -316,23 +300,6 @@ const stats = [
       width: 1px;
       background-color: #e2dcd2;
       margin: 8px 0;
-    }
-
-    .stats-bar {
-      padding: 24px 0;
-    }
-
-    .stats-container {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-    }
-
-    .stat-divider {
-      width: 1px;
-      height: 50px;
-      background-color: rgba(255, 255, 255, 0.12);
     }
   }
 </style>
