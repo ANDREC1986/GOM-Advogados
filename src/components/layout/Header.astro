@@ -13,18 +13,16 @@ import Logo from "../../assets/old/logos/GOM-Advogados-Logo.png";
         <Image
           src={Logo}
           alt="GOM Advogados"
-          widths={[180, 200]}
-          sizes="(min-width: 1024px) 200px, 180px"
+          widths={[140, 200]}
+          sizes="(min-width: 1024px) 200px, 140px"
           class="logo-site"
+          loading="eager"
         />
       </div>
     </a>
 
-    <!-- Desktop Navigation Component -->
-    <Navbar />
-
-    <!-- Header CTA Button & Hamburger -->
     <div class="header-actions">
+      <Navbar />
       <div class="desktop-cta">
         <Button
           variant="outline"
@@ -84,10 +82,14 @@ import Logo from "../../assets/old/logos/GOM-Advogados-Logo.png";
 <style>
   /* Mobile First Base Styles */
   .logo-site {
-    width: 180px;
+    width: 140px;
     height: auto;
     display: block;
     transition: width 0.3s ease;
+  }
+
+  .menu-container {
+    display: flex;
   }
 
   .site-header {
@@ -97,9 +99,9 @@ import Logo from "../../assets/old/logos/GOM-Advogados-Logo.png";
     width: 100%;
     background: linear-gradient(
       180deg,
-      rgba(10, 11, 13, 0.9) 0%,
-      rgba(10, 11, 13, 0.45) 65%,
-      rgba(10, 11, 13, 0) 100%
+      rgba(10, 11, 13, 0.8) 0%,
+      rgba(10, 11, 13, 0.3) 45%,
+      rgba(10, 11, 13, 0) 90%
     );
     border-bottom: none;
     padding: 16px 0;

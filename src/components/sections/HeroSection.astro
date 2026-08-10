@@ -23,35 +23,36 @@ import escritorioImg from "../../assets/escritorio.png";
       <!-- Constrained Text Wrapper -->
       <div class="hero-text-wrapper">
         <div class="hero-subtitle">
-          <span class="subtitle-line"></span>
           <span class="subtitle-text">EXCELÊNCIA. ESTRATÉGIA. RESULTADOS.</span>
         </div>
-
-        <h1 class="hero-title">
-          Soluções jurídicas estratégicas para proteger o que mais importa.
-        </h1>
-
-        <p class="hero-description">
-          Atuamos de forma preventiva e contenciosa, com foco em empresas e
-          pessoas que buscam segurança, tranquilidade e melhores resultados.
-        </p>
+        <span class="subtitle-line"></span>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="hero-actions">
-        <Button
-          variant="gold"
-          icon="whatsapp"
-          text="FALAR NO WHATSAPP"
-          href="https://wa.me/554730457491"
-        />
-        <Button
-          variant="outline"
-          icon="calendar"
-          text="AGENDAR REUNIÃO"
-          href="https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o."
-        />
-      </div>
+      <h1 class="hero-title">
+        <span class="first-title"> Soluções jurídicas estratégicas para </span>
+        <span class="second-title"> proteger o que mais importa. </span>
+      </h1>
+
+      <p class="hero-description">
+        Atuamos de forma preventiva e contenciosa, com foco em empresas e
+        pessoas que buscam segurança, tranquilidade e melhores resultados.
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="hero-actions">
+      <Button
+        variant="gold"
+        icon="whatsapp"
+        text="FALAR NO WHATSAPP"
+        href="https://wa.me/554730457491"
+      />
+      <Button
+        variant="outline"
+        icon="calendar"
+        text="AGENDAR REUNIÃO"
+        href="https://wa.me/554730457491?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o."
+      />
     </div>
   </div>
 </section>
@@ -61,12 +62,16 @@ import escritorioImg from "../../assets/escritorio.png";
   .hero-section {
     position: relative;
     width: 100%;
-    min-height: 540px;
+    min-height: 640px;
     background-color: var(--color-bg-dark);
     padding: 110px 0 60px 0;
     display: flex;
     align-items: center;
     overflow: hidden;
+  }
+
+  .second-title {
+    color: var(--color-gold);
   }
 
   /* Layer 1: Background Visual Container */
@@ -81,10 +86,10 @@ import escritorioImg from "../../assets/escritorio.png";
   }
 
   .hero-bg-image {
-    width: 100%;
+    width: auto;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 68%;
     display: block;
   }
 
@@ -95,8 +100,8 @@ import escritorioImg from "../../assets/escritorio.png";
     z-index: 2;
     background: linear-gradient(
       180deg,
-      rgba(10, 11, 13, 0.65) 0%,
-      rgba(10, 11, 13, 0.45) 100%
+      rgba(10, 11, 13, 0) 0%,
+      rgba(10, 11, 13, 0.8) 100%
     );
   }
 
@@ -115,15 +120,13 @@ import escritorioImg from "../../assets/escritorio.png";
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 100%;
+    padding-top: 10rem;
+    max-width: 65%;
   }
 
   /* Constrained Text Container for Mobile */
   .hero-text-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-width: 380px;
+    display: none;
   }
 
   .hero-subtitle {
@@ -134,7 +137,7 @@ import escritorioImg from "../../assets/escritorio.png";
 
   .subtitle-line {
     width: 24px;
-    height: 1.5px;
+    height: 1px;
     background-color: var(--color-gold);
     display: inline-block;
   }
@@ -149,9 +152,11 @@ import escritorioImg from "../../assets/escritorio.png";
   }
 
   .hero-title {
+    display: flex;
+    flex-direction: column;
     font-family: var(--font-serif-display);
-    font-size: 1.65rem;
-    font-weight: 600;
+    font-size: 2.4rem;
+    font-weight: 100;
     line-height: 1.22;
     color: var(--color-text-white);
     letter-spacing: -0.01em;
@@ -160,7 +165,7 @@ import escritorioImg from "../../assets/escritorio.png";
 
   .hero-description {
     font-family: var(--font-sans);
-    font-size: 0.85rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.85);
     font-weight: 400;
@@ -169,10 +174,11 @@ import escritorioImg from "../../assets/escritorio.png";
 
   .hero-actions {
     display: flex;
+    max-width: 70%;
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
-    margin-top: 4px;
+    margin-top: 3rem;
   }
 
   .hero-actions :global(.btn) {
@@ -181,8 +187,11 @@ import escritorioImg from "../../assets/escritorio.png";
 
   /* Tablet Enhancements (min-width: 640px) */
   @media (min-width: 640px) {
+    .second-title {
+      color: white;
+    }
     .hero-section {
-      min-height: 580px;
+      min-height: 460px;
     }
 
     .hero-overlay {
@@ -237,17 +246,16 @@ import escritorioImg from "../../assets/escritorio.png";
   /* Desktop Enhancements (min-width: 1024px) */
   @media (min-width: 1024px) {
     .hero-section {
-      min-height: 620px;
-      padding: 150px 0 95px 0;
+      min-height: 800px;
+      padding: 150px 0 3rem 0;
     }
 
     /* Fixed 580px width visual layer anchored to the right side on desktop */
     .hero-visual {
       left: auto;
       right: 0;
-      width: 1200px;
+      width: auto;
       height: 100%;
-      object-position: unset;
     }
 
     /* Horizontal gradient blending desktop text section into the image */
@@ -255,21 +263,30 @@ import escritorioImg from "../../assets/escritorio.png";
       background: linear-gradient(
         90deg,
         #0a0b0d 0%,
-        rgba(10, 11, 13, 0.85) 45%,
-        rgba(10, 11, 13, 0.2) 100%
+        rgba(0, 0, 0, 1) 10%,
+        rgba(0, 0, 0, 0.4) 20%,
+        rgba(0, 0, 0, 0) 100%
       );
     }
 
     .hero-content {
-      max-width: 620px;
+      padding-top: 80px;
+      max-width: 580px;
     }
 
     .hero-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       max-width: 100%;
     }
 
     .hero-title {
+      display: block;
       font-size: 3.2rem;
+    }
+    .hero-description {
+      font-size: 1.25rem;
     }
   }
 </style>

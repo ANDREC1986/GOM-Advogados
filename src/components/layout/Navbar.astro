@@ -3,22 +3,24 @@ interface Props {
   className?: string;
 }
 
-const { className = '' } = Astro.props;
+const { className = "" } = Astro.props;
 
 const navLinks = [
-  { label: 'QUEM SOMOS', href: '#quem-somos' },
-  { label: 'ÁREAS DE ATUAÇÃO', href: '#areas-de-atuacao' },
-  { label: 'EQUIPE', href: '#equipe' },
-  { label: 'CONTATO', href: '#contato' },
+  { label: "QUEM SOMOS", href: "#quem-somos" },
+  { label: "ÁREAS DE ATUAÇÃO", href: "#areas-de-atuacao" },
+  { label: "EQUIPE", href: "#equipe" },
+  { label: "CONTATO", href: "#contato" },
 ];
 ---
 
 <nav class={`main-nav ${className}`}>
-  {navLinks.map((link) => (
-    <a href={link.href} class="nav-link">
-      {link.label}
-    </a>
-  ))}
+  {
+    navLinks.map((link) => (
+      <a href={link.href} class="nav-link">
+        {link.label}
+      </a>
+    ))
+  }
 </nav>
 
 <style>
@@ -29,8 +31,8 @@ const navLinks = [
 
   .nav-link {
     font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: 0.86rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
     color: rgba(255, 255, 255, 0.85);
     transition: color 0.3s ease;
