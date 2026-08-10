@@ -29,17 +29,17 @@ const whatsappUrl =
             Fale com um de nossos especialistas e dê o primeiro passo para a
             solução que você precisa.
           </p>
-        </div>
 
-        <!-- WhatsApp Button for Mobile -->
-        <div class="cta-action-group mobile-cta-group">
-          <Button
-            variant="gold"
-            icon="whatsapp"
-            text="FALAR NO WHATSAPP"
-            href="https://wa.me/554730457491"
-          />
-          <span class="cta-subtext">Atendimento rápido e humanizado</span>
+          <!-- WhatsApp Button for Mobile -->
+          <div class="cta-action-group mobile-cta-group">
+            <Button
+              variant="gold"
+              icon="whatsapp"
+              text="FALAR NO WHATSAPP"
+              href="https://wa.me/554730457491"
+            />
+            <span class="cta-subtext">Atendimento rápido e humanizado</span>
+          </div>
         </div>
       </div>
 
@@ -97,7 +97,7 @@ const whatsappUrl =
   }
 
   .cta-container {
-    max-width: 1320px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
@@ -357,6 +357,7 @@ const whatsappUrl =
       width: calc(54% - 5px) !important;
       min-width: 0 !important;
       gap: 10px !important;
+      margin: 0 1rem;
     }
 
     /* Text block MUST be order 1 (on top) inside left column */
@@ -388,17 +389,6 @@ const whatsappUrl =
       margin-top: 4px !important;
     }
 
-    .whatsapp-cta-btn {
-      padding: 11px 8px !important;
-      font-size: 0.72rem !important;
-      gap: 5px !important;
-    }
-
-    .whatsapp-cta-btn :global(svg) {
-      width: 16px !important;
-      height: 16px !important;
-    }
-
     .cta-subtext {
       font-size: 0.68rem !important;
     }
@@ -412,10 +402,10 @@ const whatsappUrl =
       flex: 0 0 calc(46% - 5px) !important;
       width: calc(46% - 5px) !important;
       min-width: 0 !important;
-      padding: 0 !important;
+      padding: 0 1rem 0 0 !important;
+      max-width: 170px;
       margin: 0 !important;
       border: none !important;
-      gap: 8px !important;
     }
 
     .diff-item {
