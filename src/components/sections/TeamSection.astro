@@ -1,0 +1,354 @@
+---
+import Title from "../common/Title.astro";
+import TeamCard from "../cards/TeamCard.astro";
+
+import guilhermeImg from "../../assets/guilherme.png";
+import brunaImg from "../../assets/bruna.png";
+import gabrielImg from "../../assets/gabriel.png";
+import isadoraImg from "../../assets/isadora.png";
+
+const team = [
+  {
+    image: guilhermeImg,
+    role: "SÓCIO FUNDADOR",
+    name: "GUILHERME DE OLIVEIRA MERLIN",
+    specialty: "Direito Previdenciário",
+  },
+  {
+    image: brunaImg,
+    role: "SÓCIA",
+    name: "BRUNA CAROLINA MESQUITA",
+    specialty: "Direito Civil",
+  },
+  {
+    image: gabrielImg,
+    role: "ADVOGADO",
+    name: "GABRIEL HENRIQUE DA SILVA",
+    specialty: "Direito Trabalhista",
+  },
+  {
+    image: isadoraImg,
+    role: "ADVOGADA",
+    name: "ISADORA FERNANDES RIBEIRO",
+    specialty: "Direito Tributário",
+  },
+];
+---
+
+<section id="equipe" class="team-section">
+  <div class="container">
+    <!-- Left Column (Desktop) / Stacked Top (Mobile) -->
+    <div class="text-col">
+      <!-- Header -->
+      <Title
+        badge="NOSSA EQUIPE"
+        headline="Experiência, técnica <br />e compromisso <br /><span class='gold'>com o seu resultado.</span>"
+      />
+
+      <!-- Description Paragraphs -->
+      <div class="desc-wrapper">
+        <p class="about-paragraph">
+          Contamos com uma equipe de advogados especializados, em constante
+          atualização e preparados para oferecer as melhores estratégias
+          jurídicas para cada caso.
+        </p>
+        <p class="about-paragraph">
+          Atendimento próximo, análise criteriosa e soluções personalizadas para
+          proteger seus direitos e alcançar seus objetivos.
+        </p>
+      </div>
+
+      <!-- Quote Card -->
+      <div class="quote-card">
+        <div class="quote-icon-box">
+          <span class="quote-symbol">“</span>
+        </div>
+        <p class="quote-text">
+          Mais do que advogar, nosso propósito é gerar <span
+            class="quote-highlight">segurança e confiança.</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column (Desktop) / Stacked Bottom (Mobile) -->
+    <div class="carousel-col">
+      <!-- Carousel/Grid of Team Cards -->
+      <div class="team-carousel-container">
+        <div class="team-carousel">
+          {
+            team.map((member) => (
+              <div class="carousel-item">
+                <TeamCard
+                  image={member.image}
+                  role={member.role}
+                  name={member.name}
+                  specialty={member.specialty}
+                />
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Dots indicators (Mobile only) -->
+        <div class="carousel-dots">
+          {
+            team.map((_, i) => (
+              <span class={`dot ${i === 0 ? "active" : ""}`} />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .team-section {
+    background-color: var(--color-bg-light);
+    width: 100%;
+    padding: 60px 0;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .desc-wrapper {
+    max-width: 800px;
+  }
+
+  .about-paragraph {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+  }
+
+  .about-paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quote Card */
+  .quote-card {
+    background-color: var(--color-card-light);
+    border: 1px solid rgba(200, 162, 97, 0.3);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 500px;
+  }
+
+  .quote-icon-box {
+    background-color: var(--color-bg-dark, #0a0b0d);
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .quote-symbol {
+    font-family: var(--font-serif-display), serif;
+    font-size: 2.2rem;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-top: 10px; /* Offset for quotes visual alignment */
+  }
+
+  .quote-text {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  .quote-highlight {
+    color: var(--color-gold);
+    font-weight: 700;
+  }
+
+  /* Carousel Layout for Mobile (horizontal scroll) */
+  .team-carousel-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .carousel-col {
+    width: 100%;
+  }
+
+  .team-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 12px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    cursor: grab;
+    user-select: none;
+  }
+
+  .team-carousel.grabbing {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+  .team-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+
+  .carousel-item {
+    scroll-snap-align: start;
+    flex: 0 0 280px;
+  }
+
+  /* Carousel Indicators */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(200, 162, 97, 0.25);
+    transition: background-color 0.3s ease;
+  }
+
+  .dot.active {
+    background-color: var(--color-gold);
+  }
+
+  /* Tablet / Desktop Grid View */
+  @media (min-width: 900px) {
+    .container {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .text-col {
+      width: 100%;
+    }
+
+    .team-carousel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow-x: visible;
+      scroll-snap-type: none;
+      gap: 5px;
+      padding-bottom: 0;
+      cursor: default;
+    }
+
+    .carousel-item {
+      flex: 1;
+    }
+
+    .carousel-dots {
+      display: none; /* Hidden on desktop */
+    }
+
+    .quote-card {
+      padding: 20px;
+    }
+  }
+</style>
+
+<script>
+  // Mouse click-and-drag scrolling for the carousel on desktop
+  // & dots synchronization on mobile scroll
+  const setupCarousel = () => {
+    const carousel = document.querySelector(".team-carousel") as HTMLElement;
+    const dots = document.querySelectorAll(".carousel-dots .dot");
+
+    if (!carousel) return;
+
+    // Prevent default browser link/image dragging inside the carousel
+    carousel.addEventListener("dragstart", (e: DragEvent) => {
+      e.preventDefault();
+    });
+
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+
+    // Mouse events for Desktop click-and-drag
+    carousel.addEventListener("mousedown", (e: MouseEvent) => {
+      isDown = true;
+      carousel.classList.add("grabbing");
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      isDown = false;
+      carousel.classList.remove("grabbing");
+    });
+
+    carousel.addEventListener("mouseup", () => {
+      isDown = false;
+      carousel.classList.remove("grabbing");
+    });
+
+    carousel.addEventListener("mousemove", (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5; // multiplier to adjust scrolling speed
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch/scroll event to update active dot indicator
+    carousel.addEventListener("scroll", () => {
+      if (dots.length === 0) return;
+      const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+      if (scrollWidth <= 0) return;
+
+      const percentage = carousel.scrollLeft / scrollWidth;
+      const index = Math.round(percentage * (dots.length - 1));
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active");
+        }
+      });
+    });
+  };
+
+  // Run on page load
+  setupCarousel();
+
+  // Re-run on View Transitions (if used in future)
+  document.addEventListener("astro:after-swap", setupCarousel);
+</script>
