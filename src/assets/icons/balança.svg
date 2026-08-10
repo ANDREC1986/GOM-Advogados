@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-74.845681,-911.774657)">
+        <path d="M89.153,957.815L110.683,957.815" style="fill:none;stroke:currentColor;stroke-width:1.07px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-74.845681,-911.774657)">
+        <path d="M100.321,953.589L99.965,918.972L83.391,922.76L75.341,941.537L91.678,941.465L83.391,922.76" style="fill:none;stroke:currentColor;stroke-width:1px;"/>
+    </g>
+    <g transform="matrix(-1.196159,-0,0,-1.613636,79.803571,1552.485969)">
+        <path d="M66.302,943.619L52.647,943.619C52.647,941.734 55.704,940.206 59.475,940.206C63.246,940.206 66.302,941.734 66.302,943.619Z" style="fill:rgb(235,235,235);fill-opacity:0;stroke:currentColor;stroke-width:0.75px;"/>
+    </g>
+    <g transform="matrix(-1.002369,0,0,1,125.024136,-911.774657)">
+        <path d="M100.103,953.589L99.965,918.972L83.391,922.76L75.341,941.537L91.678,941.465L83.391,922.76" style="fill:none;stroke:currentColor;stroke-width:1px;"/>
+    </g>
+    <g transform="matrix(1.198992,-0,-0,-1.613636,-29.991422,1552.485969)">
+        <path d="M66.302,943.619L52.647,943.619C52.647,941.734 55.704,940.206 59.475,940.206C63.246,940.206 66.302,941.734 66.302,943.619Z" style="fill:rgb(235,235,235);fill-opacity:0;stroke:currentColor;stroke-width:0.75px;"/>
+    </g>
+    <g transform="matrix(1.126091,0,0,0.991467,-80.948565,-905.5632)">
+        <path d="M96.196,959.793L91.999,959.793C91.787,959.362 91.675,958.872 91.675,958.373C91.675,956.805 92.76,955.532 94.098,955.532C95.435,955.532 96.52,956.805 96.52,958.373C96.52,958.872 96.408,959.362 96.196,959.793Z" style="fill:rgb(235,235,235);fill-opacity:0;stroke:currentColor;stroke-width:1.01px;"/>
+    </g>
+    <g transform="matrix(1.253134,0,0,1.486445,-100.145841,-1357.413632)">
+        <ellipse cx="99.877" cy="916.474" rx="1.799" ry="1.563" style="fill:rgb(235,235,235);fill-opacity:0;stroke:currentColor;stroke-width:0.78px;"/>
+    </g>
+</svg>

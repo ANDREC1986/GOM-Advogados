@@ -1,0 +1,73 @@
+---
+interface Props {
+  name: string;
+  size?: number | string;
+  class?: string;
+}
+
+const { name, size, class: className = "" } = Astro.props;
+
+// Dynamically import all SVG icons from src/assets/icons as raw SVG strings
+const iconFiles = import.meta.glob<string>("../../assets/icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const iconAliasMap: Record<string, string> = {
+  scale: "../../assets/icons/balança.svg",
+  balanca: "../../assets/icons/balança.svg",
+  balança: "../../assets/icons/balança.svg",
+  
+  chart: "../../assets/icons/grafico-oscilante.svg",
+  grafico: "../../assets/icons/grafico-oscilante.svg",
+  "grafico-oscilante": "../../assets/icons/grafico-oscilante.svg",
+
+  people: "../../assets/icons/familia.svg",
+  familia: "../../assets/icons/familia.svg",
+  family: "../../assets/icons/familia.svg",
+
+  building: "../../assets/icons/forum.svg",
+  forum: "../../assets/icons/forum.svg",
+
+  shield: "../../assets/icons/badge pessoa.svg",
+  "shield-check": "../../assets/icons/badge pessoa.svg",
+  "badge-pessoa": "../../assets/icons/badge pessoa.svg",
+  "badge pessoa": "../../assets/icons/badge pessoa.svg",
+
+  document: "../../assets/icons/folha com lapis.svg",
+  "folha-com-lapis": "../../assets/icons/folha com lapis.svg",
+  "folha com lapis": "../../assets/icons/folha com lapis.svg",
+
+  badge: "../../assets/icons/badge.svg",
+  calendar: "../../assets/icons/calendario.svg",
+  calendario: "../../assets/icons/calendario.svg",
+  group: "../../assets/icons/group.svg",
+  grow: "../../assets/icons/grow.svg",
+  handshake: "../../assets/icons/handshake.svg",
+  person: "../../assets/icons/person.svg",
+  user: "../../assets/icons/person.svg",
+  sign: "../../assets/icons/sign.svg",
+  target: "../../assets/icons/target.svg",
+};
+
+const pathKey = iconAliasMap[name] || `../../assets/icons/${name}.svg`;
+const rawSvg = iconFiles[pathKey] || "";
+
+// Process size or class if provided
+let processedSvg = rawSvg;
+if (size && processedSvg) {
+  processedSvg = processedSvg.replace(
+    /<svg /i,
+    `<svg width="${size}" height="${size}" `
+  );
+}
+if (className && processedSvg) {
+  processedSvg = processedSvg.replace(
+    /<svg /i,
+    `<svg class="${className}" `
+  );
+}
+---
+
+{processedSvg ? <Fragment set:html={processedSvg} /> : null}

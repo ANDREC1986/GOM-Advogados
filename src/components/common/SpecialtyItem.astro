@@ -1,7 +1,9 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   title: string;
-  icon: 'scale' | 'chart' | 'people' | 'building' | 'shield' | 'document';
+  icon: 'scale' | 'chart' | 'people' | 'building' | 'shield' | 'document' | string;
   href?: string;
 }
 
@@ -10,52 +12,7 @@ const { title, icon, href = '#' } = Astro.props;
 
 <a href={href} class="specialty-item">
   <div class="icon-wrapper">
-    {icon === 'scale' && (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3v18M6 7.5h12M6 7.5l-3 6a2.5 2.5 0 0 0 5 0l-2-6zM18 7.5l-3 6a2.5 2.5 0 0 0 5 0l-2-6zM4 21h16"></path>
-      </svg>
-    )}
-
-    {icon === 'chart' && (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="14" width="4" height="7" rx="1"></rect>
-        <rect x="10" y="9" width="4" height="12" rx="1"></rect>
-        <rect x="17" y="4" width="4" height="17" rx="1"></rect>
-        <path d="M4 11l4-4 4 3 6-6"></path>
-        <path d="M15 4h3v3"></path>
-      </svg>
-    )}
-
-    {icon === 'people' && (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="9" cy="7" r="4"></circle>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-      </svg>
-    )}
-
-    {icon === 'building' && (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 21h18M4 18h16M6 18V9M10 18V9M14 18V9M18 18V9M12 3L2 8h20L12 3z"></path>
-      </svg>
-    )}
-
-    {icon === 'shield' && (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        <circle cx="12" cy="10" r="2.5"></circle>
-        <path d="M8 17c.8-1.5 2.3-2.5 4-2.5s3.2 1 4 2.5"></path>
-      </svg>
-    )}
-
-    {icon === 'document' && (
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <path d="M16 13H8M16 17H8M10 9H8"></path>
-      </svg>
-    )}
+    <Icon name={icon} />
   </div>
 
   <span class="specialty-title">{title}</span>
@@ -85,6 +42,11 @@ const { title, icon, href = '#' } = Astro.props;
     color: var(--color-gold);
     flex-shrink: 0;
     transition: transform 0.3s ease;
+  }
+
+  .icon-wrapper :global(svg) {
+    width: 32px;
+    height: 32px;
   }
 
   .specialty-item:hover .icon-wrapper {
