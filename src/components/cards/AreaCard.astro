@@ -39,11 +39,11 @@ const { image, icon, title, description } = Astro.props;
       transform 0.3s ease,
       box-shadow 0.3s ease;
     border: 1px solid rgba(200, 162, 97, 0.1);
+    box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.4);
   }
 
   .area-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     border-color: rgba(200, 162, 97, 0.3);
   }
 
@@ -93,9 +93,9 @@ const { image, icon, title, description } = Astro.props;
   }
 
   .card-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-serif-display);
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.05em;
     color: var(--color-gold);
     text-transform: uppercase;
@@ -106,7 +106,7 @@ const { image, icon, title, description } = Astro.props;
   .card-description {
     font-family: var(--font-sans);
     font-size: 0.84rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;

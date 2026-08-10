@@ -1,13 +1,14 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 interface Props {
   title: string;
-  icon: 'scale' | 'chart' | 'people' | 'building' | 'shield' | 'document' | string;
+  icon:
+    "scale" | "chart" | "people" | "building" | "shield" | "document" | string;
   href?: string;
 }
 
-const { title, icon, href = '#' } = Astro.props;
+const { title, icon, href = "#" } = Astro.props;
 ---
 
 <a href={href} class="specialty-item">
