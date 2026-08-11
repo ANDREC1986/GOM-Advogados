@@ -1,0 +1,240 @@
+---
+import Title from "../common/Title.astro";
+import Icon from "../common/Icon.astro";
+---
+
+<section id="diferenciais" class="differences-section">
+  <div class="container">
+    <!-- Header -->
+    <Title
+      badge="NOSSO DIFERENCIAL"
+      headline="Atuação que faz<br />a <span class='gold'>diferença.</span>"
+    />
+
+    <!-- Differences Content Grid -->
+    <div class="differences-grid">
+      <!-- Top Row: 3 Items on Mobile -->
+      <div class="top-row">
+        <!-- Item 1 -->
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="target" />
+          </div>
+          <h4 class="diff-title">FOCO NO RESULTADO</h4>
+          <p class="diff-desc">
+            Estratégias jurídicas personalizadas para alcançar os melhores
+            resultados.
+          </p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="group" />
+          </div>
+          <h4 class="diff-title">ATENDIMENTO PRÓXIMO</h4>
+          <p class="diff-desc">
+            Relação direta e transparente para entender e atender cada
+            necessidade.
+          </p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="shield" />
+          </div>
+          <h4 class="diff-title">ÉTICA E INTEGRIDADE</h4>
+          <p class="diff-desc">
+            Atuação pautada na ética, transparência e respeito aos nossos
+            clientes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Row: 2 Items on Mobile -->
+      <div class="bottom-row">
+        <!-- Item 4 -->
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="graduation" />
+          </div>
+          <h4 class="diff-title">ATUALIZAÇÃO CONSTANTE</h4>
+          <p class="diff-desc">
+            Equipe em constante aperfeiçoamento para oferecer soluções
+            eficientes.
+          </p>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="diff-item">
+          <div class="diff-icon">
+            <Icon name="document" />
+          </div>
+          <h4 class="diff-title">EXPERIÊNCIA COMPROVADA</h4>
+          <p class="diff-desc">
+            Anos de atuação e centenas de casos solucionados com excelência.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .differences-section {
+    background-color: var(--color-bg-dark, #0a0b0d);
+    width: 100%;
+    padding: 60px 0;
+    box-sizing: border-box;
+  }
+
+  /* Override Title component headline color to white in this section */
+  .differences-section :global(.main-title) {
+    color: var(--color-text-white, #ffffff);
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    box-sizing: border-box;
+  }
+
+  .differences-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  /* Mobile: 3 columns in top row, 2 columns in bottom row */
+  .top-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .bottom-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .diff-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 4px;
+    box-sizing: border-box;
+    flex: 1;
+  }
+
+  /* Mobile divider lines */
+  .top-row .diff-item:not(:last-child),
+  .bottom-row .diff-item:not(:last-child) {
+    border-right: 1px solid rgba(200, 162, 97, 0.18);
+  }
+
+  .diff-icon {
+    color: var(--color-gold);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diff-icon :global(svg) {
+    width: 42px;
+    height: 42px;
+  }
+
+  .diff-title {
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-text-white, #ffffff);
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .diff-desc {
+    font-family: var(--font-sans);
+    font-size: 0.58rem;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* Desktop Grid and Dividers Layout */
+  @media (min-width: 900px) {
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .differences-grid {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      gap: 0;
+    }
+
+    /* display: contents makes top-row and bottom-row wrappers disappear layout-wise,
+       promoting all 5 diff-items to be siblings inside differences-grid flexbox */
+    .top-row,
+    .bottom-row {
+      display: contents;
+    }
+
+    .text-col {
+      flex: 0 0 280px;
+    }
+
+    .diff-item {
+      padding: 0 10px;
+      flex: 1;
+      border-right: 1px solid rgba(200, 162, 97, 0.25) !important;
+    }
+
+    .differences-grid .diff-item:first-child {
+      border-left: 1px solid rgba(200, 162, 97, 0.25) !important;
+    }
+
+    .bottom-row .diff-item:last-child {
+      border-right: none !important;
+    }
+
+    .diff-icon {
+      margin-bottom: 16px;
+    }
+
+    .diff-icon :global(svg) {
+      width: 48px;
+      height: 48px;
+    }
+
+    .diff-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      margin: 0 0 12px 0;
+    }
+
+    .diff-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      max-width: 290px;
+    }
+  }
+</style>
